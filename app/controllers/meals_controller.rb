@@ -4,8 +4,7 @@ class MealsController < ApplicationController
     @meals = Meal.all
   end
 
-  def show
-  end
+
 
   def new
     @meal = Meal.new
@@ -15,7 +14,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.user = current_user
     if @meal.save
-      redirect_to meal_path(@meal)
+      redirect_to my_meal_path(@meal)
     else
       render :new
     end
