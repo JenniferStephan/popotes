@@ -1,9 +1,11 @@
 class Meal < ApplicationRecord
   belongs_to :user
   has_many :orders
+  has_many :meal_ingredients
+  has_many :ingredients, through: :meal_ingredients
   has_many :eater_users, through: :orders, source: :user
 
-  CATEGORIES = ["Chinese", "Healthy", "Moroccan", "Burger"]
+  CATEGORIES = ["Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
 
   validates :name, presence: true
   validates :description, presence: true
@@ -13,5 +15,5 @@ class Meal < ApplicationRecord
   validates :quantity_max, presence: true, numericality: { only_integer: true }
   validates :start_availability_date, presence: true
   validates :end_availability_date, presence: true
-  # mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 end

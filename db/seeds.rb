@@ -6,9 +6,90 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Meal.destroy_all
+Order.destroy_all
+Ingredient.destroy_all
 
-Meal.create!(name: "couscous", description: "Le vendredi, le couscous c’est sacré et cette fois je vous propose la recette du couscous tunisien traditionnellement servi avec des légumes, du poulet ou de la viande rouge. Un plat convivial et familial avec pleins saveurs surtout si on y ajoute la Harissa qui est obligatoire ainsi que des poivrons verts.
+User.create!(
+  username: 'Winnie',
+  email: 'ourson@gmail.com',
+  password: 'testtest3',
+)
 
-Pour nous algériens, tunisiens et marocains manger du couscous est une tradition et un rituel. Il existe plusieurs façon de preparer le couscous algérien : le couscous Kabyle aux légumes vapeurs, le couscous aux fèves et petits pois (mesfouf) qui se déguste sans sauce, le couscous algérien aux légumes et sauce rouge, couscous aux raisins secs (seffa) etc…. Il est dans nos traditions d’accompagner le couscous de babeurre (Lben) ou lait ribot.
+User.create!(
+  username: "Javier B.",
+  email: "javier@sexy.com",
+  password: "bailar"
+)
 
-En Tunisie comme en Algérie, il existe mille et une façon de preparer le couscous, dans les villes côtières notamment Sfax on aime preparer le couscous aux poissons. Dans d’autres régions il est plus souvent consommé avec de l’agneau et des fruits secs. Si vous êtes à la recherche d’un bon couscous Tunisien authentique la meilleure chose à faire et de vous faire inviter pour le déjeuner par une famille tunisienne :).", address: "1 rue de Rivoli", category: "Moroccan", unit_price: 2, quantity_max: 8, start_availability_date: "2019-08-24", end_availability_date: "2019-08-27", user: User.last)
+User.create!(
+  username: 'Tinkie Winky',
+  email: 'titi@gmail.com',
+  password: 'testtest4',
+)
+
+User.create!(
+  username: 'Paquito',
+  email: 'pepito@gmail.com',
+  password: 'testtest5',
+)
+
+
+Meal.create!(
+  name: 'Chinese soup',
+  address: '10 villa Gaudelet, Paris',
+  category: 'Chinese',
+  description: 'A delicious soup',
+  unit_price: 6,
+  quantity_max: 3,
+  user_id: 1
+)
+
+Meal.create!(
+  name: 'Ceasar salad',
+  address: '10 villa Gaudelet, Paris',
+  category: 'Healthy',
+  description: 'A Healthy salad',
+  unit_price: 5,
+  quantity_max: 3,
+  user_id: 1
+)
+
+Meal.create!(
+  name: 'Vege salad',
+  address: '10 villa Gaudelet, Paris',
+  category: 'Healthy',
+  description: 'A Healthy salad',
+  unit_price: 5,
+  quantity_max: 4,
+  user_id: 3
+)
+
+
+Order.create!(
+  order_quantity: 1,
+  pick_up_date: '2019-08-20',
+  user_id: 2,
+  meal_id: 3,
+)
+
+Order.create!(
+  order_quantity: 3,
+  pick_up_date: '2019-08-23',
+  user_id: 1,
+  meal_id: 2,
+)
+
+Order.create!(
+  order_quantity: 2,
+  pick_up_date: '2019-08-23',
+  user_id: 3,
+  meal_id: 1,
+)
+
+ingredients = ["Céréales contenant du gluten", "Crustacés", "Oeufs", "Poissons", "Arachides", "Soja", "Lait", "Fruits à coques", "Céleri", "Moutarde", "Graines de sésame"]
+
+ingredients.each do |i|
+  Ingredient.create(name: i)
+end
