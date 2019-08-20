@@ -5,6 +5,35 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Meal.destroy_all
+Order.destroy_all
+
+User.create!(
+  username: 'Winnie',
+  email: 'ourson@gmail.com',
+  password: 'testtest3',
+)
+
+User.create!(
+  username: "Javier B.",
+  email: "javier@sexy.com",
+  password: "bailar"
+)
+
+User.create!(
+  username: 'Tinkie Winky',
+  email: 'titi@gmail.com',
+  password: 'testtest4',
+)
+
+User.create!(
+  username: 'Paquito',
+  email: 'pepito@gmail.com',
+  password: 'testtest5',
+)
+
+
 Meal.create!(
   name: 'Chinese soup',
   address: '10 villa Gaudelet, Paris',
@@ -32,5 +61,27 @@ Meal.create!(
   description: 'A Healthy salad',
   unit_price: 5,
   quantity_max: 4,
-  user_id: 1
+  user_id: 3
+)
+
+
+Order.create!(
+  order_quantity: 1,
+  pick_up_date: '2019-08-20',
+  user_id: 2,
+  meal_id: 3,
+)
+
+Order.create!(
+  order_quantity: 3,
+  pick_up_date: '2019-08-23',
+  user_id: 1,
+  meal_id: 2,
+)
+
+Order.create!(
+  order_quantity: 2,
+  pick_up_date: '2019-08-23',
+  user_id: 3,
+  meal_id: 1,
 )
