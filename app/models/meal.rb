@@ -15,6 +15,5 @@ class Meal < ApplicationRecord
   validates :quantity_max, presence: true, numericality: { only_integer: true }
   validates :start_availability_date, presence: true
   validates :end_availability_date, presence: true
-
   mount_uploader :photo, PhotoUploader
 end
