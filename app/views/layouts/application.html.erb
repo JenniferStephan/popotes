@@ -15,10 +15,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-<!-- default NavBar -->
-    <!--render 'shared/navbar' -->
+    <% render 'shared/navbar'  %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
