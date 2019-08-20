@@ -1,5 +1,4 @@
 <h2><%= @meal.name %></h2>
-<p><%= @meal.description %></p>
 <span> <%= cl_image_tag @meal.photo %> </span>
 <p> <%= link_to 'ajouter allergène', new_meal_meal_ingredient_path(@meal) %> </p>
 
