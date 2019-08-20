@@ -1,0 +1,39 @@
+<div class="banner" style="background-image: url('https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/4l/couscous-facile.jpg')">
+  <%#= cl_image_tag @meal.photo, height: 300, width: 400, crop: :fill %>
+</div>
+
+<div class="container py-2">
+  <div class="row">
+    <div class="col-8">
+      <div class="meal_header d-flex justify-content-between py-3 border-bottom">
+        <div class="meal_big_titles">
+          <h1><%= @meal.name.capitalize %></h1>
+          <h3 class=""><%= @meal.category %></h3>
+        </div>
+        <div class="user_pic_and_name d-flex flex-column align-items-center">
+          <img src="https://resize-parismatch.lanmedia.fr/img/var/news/storage/images/paris-match/people-a-z/javier-bardem/6033180-8-fre-FR/Javier-Bardem.jpg" alt="" class="">
+          <p><%= @meal.user.username %></p>
+        </div>
+      </div>
+
+      <div class="meal_text">
+        <p><%= @meal.description %></p>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="checkout card p-3 sticky-top">
+        <p class="d-flex py-3 border-bottom"><strong><%= @meal.unit_price %>€ </strong> /serving</p>
+          <%= simple_form_for(@order) do |f| %>
+            <%= hidden_field_tag :meal_id, @meal.id %>
+            <%= f.input :pick_up_date %>
+            <%= f.input :order_quantity %>
+            <%= f.button :submit, class: "button" %>
+          <% end %>
+      </div>
+    </div>
+  <!--   <div class="location">
+
+    </div> -->
+  </div>
+</div>

@@ -11,7 +11,7 @@ class Meal < ApplicationRecord
   validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :unit_price, presence: true, numericality: { only_integer: true }
   validates :quantity_max, presence: true, numericality: { only_integer: true }
-  # validates :start_availability_date, presence: true
-  # validates :end_availability_date, presence: true
-
+  validates :start_availability_date, presence: true
+  validates :end_availability_date, presence: true
+  # mount_uploader :photo, PhotoUploader
 end
