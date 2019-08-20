@@ -1,5 +1,3 @@
-require 'Date'
-
 class CreateMeals < ActiveRecord::Migration[5.2]
   def change
     create_table :meals do |t|
@@ -9,7 +7,7 @@ class CreateMeals < ActiveRecord::Migration[5.2]
       t.text :address
       t.integer :unit_price
       t.integer :quantity_max
-      t.date :start_availability_date, default: Date.today
+      t.date :start_availability_date
       t.date :end_availability_date
       t.references :user, foreign_key: true
 
