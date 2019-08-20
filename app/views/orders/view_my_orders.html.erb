@@ -1,0 +1,13 @@
+<h1>my orders</h1>
+
+
+<% @my_orders.each do |order| %>
+  <div class="card-items">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-item-infos">
+      <h2><%= order.order_quantity %></h2>
+      <h2><%= order.meal.user_id %></h2>
+      <p><%= order.user.username %><%=  order.meal.name %></p>
+    </div>
+  </div>
+<% end %>

@@ -1,4 +1,13 @@
 class OrdersController < ApplicationController
+
+  def index
+    @order = Order.all
+  end
+
+  def view_my_orders
+    @my_orders = Order.where(user: current_user)
+  end
+
   def new
     @order = Order.new
   end

@@ -1,0 +1,33 @@
+
+
+<div class="container py-2">
+  <div class="row">
+    <div class="col-8">
+      <div class="meal_header d-flex justify-content-between py-3 border-bottom">
+        <div class="meal_big_titles">
+          <h1><%= @meal.name.capitalize %></h1>
+          <h3 class=""><%= @meal.category %></h3>
+        </div>
+        <div class="user_pic_and_name d-flex flex-column align-items-center">
+          <img src="https://resize-parismatch.lanmedia.fr/img/var/news/storage/images/paris-match/people-a-z/javier-bardem/6033180-8-fre-FR/Javier-Bardem.jpg" alt="" class="">
+          <p><%= @meal.user.username %></p>
+        </div>
+      </div>
+
+      <div class="meal_text">
+        <p><%= @meal.description %></p>
+      </div>
+    </div>
+
+<p> <%= link_to 'ajouter allergène', new_meal_meal_ingredient_path(@meal) %> </p>
+
+<ul><% @meal.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %> </li>
+  <% end %></ul>
+
+  <!--   <div class="location">
+
+    </div> -->
+  </div>
+</div>
+

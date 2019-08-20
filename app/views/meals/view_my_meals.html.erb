@@ -8,7 +8,7 @@
     <div class="card-item-infos">
       <h2><%= meal.name %></h2>
       <p><%= meal.description %><%=  meal.quantity_max %></p>
-      <p><%= link_to "Edit", "#" %></p>
+      <p><%= link_to "Edit", edit_meal_path(meal.id) %></p>
       <p><%= link_to "Delete", "#" %></p>
     </div>
   </div>
