@@ -1,11 +1,16 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :edit, :update]
+  before_action :set_meal, only: [:show, :edit, :view_my_meals, :view_my_meal, :update]
   def index
     @meals = Meal.all
   end
 
   def view_my_meals
     @my_meals = Meal.where(user: current_user)
+  end
+
+  def view_my_meal
+  @my_meals = Meal.where(user: current_user)
+  @my_meal = @my_meals.find(params[:id])
   end
 
   def show
