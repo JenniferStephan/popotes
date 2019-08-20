@@ -1,0 +1,15 @@
+<%= simple_form_for(@meal) do |f| %>
+  <%= f.input :name, label: 'Nom du plat' %>
+  <%= f.input :description, label: 'Description'  %>
+  <%= f.input :address, label: 'Votre adresse' %>
+  <%= f.input :category, label: 'Choisissez une catégorie', collection: Meal::CATEGORIES %>
+  <%= f.input :unit_price, label: "Prix d'une part" %>
+  <%= f.input :quantity_max, label: 'Nombre de parts maximum' %>
+  <%= f.input :start_availability_date, label: 'Disponible à partir du' %>
+  <%= f.input :end_availability_date, label: "Jusqu'au" %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+
+  <%= f.submit "add a meal" %>
+  <% end %>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_154057) do
+ActiveRecord::Schema.define(version: 2019_08_20_101128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,17 +22,18 @@ ActiveRecord::Schema.define(version: 2019_08_19_154057) do
     t.text "address"
     t.integer "unit_price"
     t.integer "quantity_max"
-    t.date "start_availability_date", default: "2019-08-19"
+    t.date "start_availability_date", default: "2019-08-20"
     t.date "end_availability_date"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "order_quantity"
-    t.date "pick_up_date", default: "2019-08-19"
+    t.date "pick_up_date", default: "2019-08-20"
     t.text "order_comment"
     t.bigint "user_id"
     t.bigint "meal_id"
