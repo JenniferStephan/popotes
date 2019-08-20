@@ -1,0 +1,26 @@
+.category-container {
+  display: flex;
+  height: 150px;
+  margin: 50px;
+}
+
+.category-item {
+  width: 200px;
+  margin: auto;
+  align-items: center;
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  color: white;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+
