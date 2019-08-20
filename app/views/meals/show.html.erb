@@ -1,5 +1,5 @@
-<div class="banner" style="background-image: url('https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/4l/couscous-facile.jpg')">
-  <%#= cl_image_tag @meal.photo, height: 300, width: 400, crop: :fill %>
+<div class="banner" style="background-image: url('<%= cl_image_path @meal.photo %>')">
+
 </div>
 
 <div class="container py-2">
