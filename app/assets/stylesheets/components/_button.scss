@@ -1,0 +1,13 @@
+.btn-medium {
+  color: white;
+  border: 3px solid white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-medium:hover {
+  opacity: 1;
+}

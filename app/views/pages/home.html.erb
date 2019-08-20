@@ -1,68 +1,56 @@
-
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-
-  <a class="navbar-brand d-none d-sm-block" href="#">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
-  </a>
-
-  <div class="searching">
-    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <div class="search-form-control form-group d-flex">
-        <input class="form-control input-large string required" type="text" name="search[query]" id="search_query" />
-
-        <button name="button" type="submit" class="btn btn-flat">
-          <i class="fas fa-search"></i> Search
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/1000x500);">
+  <div class="container">
+    <h1><strong>PO'POTES </strong>!</h1>
+    <p>Cuisinez, mangez et partagez</p>
+    <!-- <a class="btn btn-medium" href="#">Eat now</a> -->
+    <div class="search-form-control form-group d-flex">
+       <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+       <button name="button" type="submit" class="btn btn-flat">
+         <i class="fas fa-search"></i> Search
         </button>
-      </div>
-    <% end %>
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-          <%= link_to "Add a meal", "#", class: "nav-link d-block d-sm-none" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "My meals", "#", class: "nav-link d-block d-sm-none" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "My orders", "#", class: "nav-link d-block d-sm-none" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "My profile", "#", class: "nav-link d-block d-sm-none" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Loug out", "#", class: "nav-link d-block d-sm-none" %>
-      </li>
-
-      <li class="dropdown align-self-center d-none d-sm-block">
-        <button class="dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Kitchen
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <%= link_to "Add a meal", "#", class: "dropdown-item" %>
-          <%= link_to "My meals", "#", class: "dropdown-item" %>
-          <%= link_to "My orders", "#", class: "dropdown-item" %>
-          <%= link_to "My profile", "#", class: "dropdown-item d-block d-sm-none" %>
-          <%= link_to "Loug out", "#", class: "dropdown-item" %>
-        </div>
-      </li>
-
-
-      <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle d-none d-sm-block", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "My profile", "#", class: "dropdown-item" %>
-          <%= link_to "Loug out", "#", class: "dropdown-item" %>
-        </div>
-      </li>
-    </ul>
+     </div>
   </div>
 </div>
 
 
+
+
+<div class="category-container">
+
+    <div class="category-item">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        Breakfast
+      </div>
+    </div>
+
+    <div class="category-item">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        Last minute deals
+      </div>
+    </div>
+
+    <div class="category-item">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        Today's meals
+      </div>
+    </div>
+
+    <div class="category-item">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        Chinese
+      </div>
+    </div>
+
+    <div class="category-item">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        Chinese
+      </div>
+    </div>
+
+     <div class="category-item">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        Chinese
+      </div>
+    </div>
+
+  </div>
