@@ -4,7 +4,12 @@ class MealsController < ApplicationController
     @meals = Meal.all
   end
 
+  def view_my_meals
+    @my_meals = Meal.where(user: current_user)
+  end
 
+  def show
+  end
 
   def new
     @meal = Meal.new
