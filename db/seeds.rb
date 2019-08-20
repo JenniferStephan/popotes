@@ -8,6 +8,7 @@
 User.destroy_all
 Meal.destroy_all
 Order.destroy_all
+Ingredient.destroy_all
 
 User.create!(
   username: 'Winnie',
@@ -85,3 +86,9 @@ Order.create!(
   user_id: 3,
   meal_id: 1,
 )
+
+ingredients = ["Céréales contenant du gluten", "Crustacés", "Oeufs", "Poissons", "Arachides", "Soja", "Lait", "Fruits à coques", "Céleri", "Moutarde", "Graines de sésame"]
+
+ingredients.each do |i|
+  Ingredient.create(name: i)
+end
