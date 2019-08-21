@@ -33,11 +33,11 @@
       <li class="nav-item active">
         <%= link_to "My orders", my_orders_path, class: "nav-link d-block d-sm-none" %>
       </li>
-      <!-- <li class="nav-item active">
-        <%= link_to #"My profile", "#", class: "nav-link d-block d-sm-none" %>
-      </li> -->
       <li class="nav-item active">
-        <%= link_to "Log out", , class: "nav-link d-block d-sm-none" %>
+        <%= link_to "My profile", "#", class: "nav-link d-block d-sm-none" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Log out", destroy_user_session_path, class: "nav-link d-block d-sm-none" %>
       </li>
 
       <li class="dropdown align-self-center d-none d-sm-block">
@@ -58,7 +58,7 @@
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle d-none d-sm-block", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "My profile", "#", class: "dropdown-item" %>
-          <%= link_to "Loug out", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", "#", class: "dropdown-item" %>
         </div>
       </li>
     </ul>
