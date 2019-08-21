@@ -22,7 +22,9 @@ initSelector();
 
 initMapbox();
 
-initAutocomplete();
+if (document.querySelector('#meal_address')) {
+  initAutocomplete();
+}
 
 
 if (document.querySelector(".total-price")) {
