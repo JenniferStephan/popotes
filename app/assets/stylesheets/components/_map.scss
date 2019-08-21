@@ -3,3 +3,17 @@
   position: sticky;
   top: 0;
 }
+
+.mapboxgl-popup {
+  max-width: 500px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.meal-pic img {
+  max-width: 200px;
+  overflow: hidden;
+}
