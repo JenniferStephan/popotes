@@ -1,7 +1,14 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_meal, only: [:show, :edit, :view_my_meals, :view_my_meal, :update]
+
   def index
     @meals = Meal.all
+  end
+
+  def show
+    @meal = Meal.find(params[:id])
+    @order = Order.new
   end
 
   def view_my_meals
@@ -9,13 +16,8 @@ class MealsController < ApplicationController
   end
 
   def view_my_meal
-  @my_meals = Meal.where(user: current_user)
-  @my_meal = @my_meals.find(params[:id])
-  end
-
-  def show
-    @meal = Meal.find(params[:id])
-    @order = Order.new
+    @my_meals = Meal.where(user: current_user)
+    @my_meal = @my_meals.find(params[:id])
   end
 
   def new
