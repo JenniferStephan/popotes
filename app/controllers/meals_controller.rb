@@ -1,5 +1,8 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :edit, :update]
+
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_meal, only: [:show, :edit, :view_my_meals, :update]
+  
   def index
     @meals = Meal.geocoded
 
@@ -13,18 +16,18 @@ class MealsController < ApplicationController
     end
   end
 
+  def show
+    @meal = Meal.find(params[:id])
+    @order = Order.new
+  end
+
   def view_my_meals
     @my_meals = Meal.where(user: current_user)
   end
 
   def view_my_meal
-  @my_meals = Meal.where(user: current_user)
-  @my_meal = @my_meals.find(params[:id])
-  end
-
-  def show
-    @meal = Meal.find(params[:id])
-    @order = Order.new
+    @my_meals = Meal.where(user: current_user)
+    @my_meal = @my_meals.find(params[:id])
   end
 
   def new

@@ -1,11 +1,11 @@
 class Meal < ApplicationRecord
   belongs_to :user
-  has_many :orders
-  has_many :meal_ingredients
+  has_many :orders, dependent: :destroy
+  has_many :meal_ingredients, dependent: :destroy
   has_many :ingredients, through: :meal_ingredients
   has_many :eater_users, through: :orders, source: :user
 
-  CATEGORIES = ["Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
+  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma " "Italian", "Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
 
   validates :name, presence: true
   validates :description, presence: true

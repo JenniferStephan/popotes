@@ -20,7 +20,6 @@ const initSelector = () => {
 
 initSelector();
 
-
 initMapbox();
 
 initAutocomplete();
@@ -44,5 +43,3 @@ document.addEventListener('click', (event) => {
   additionTotal();
 });
 }
-
-

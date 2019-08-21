@@ -1,5 +1,5 @@
 <div class="container mt-3 ">
-  <h2>Category is...</h2>
+<!--   <h2>Category is...</h2> -->
 
   <div class="category-container">
 
@@ -28,7 +28,7 @@
 
 
 <div class="container mt-3">
-  <h1>All the meals available</h1>
+<!--   <h1>All the meals available</h1> -->
 
 <!-- dynamic count according to the search -->
 
@@ -36,24 +36,27 @@
 
 <div class="row">
   <% @meals.each do |meal| %>
-    <div class="col-3">
+    <div class="box col-3">
 
-      <div class="meal-card">
 
-        <div class="meal-card-image" style="background-image: url(https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80)"></div>
+      <%= link_to meal_path(meal) do %>
+        <div class="meal-card">
 
-          <div class="meal-card-content">
-            <div class="meal-card-title"><h4><%= meal.name %></h4></div>
-              <p><%= meal.description %></p>
+          <div class="meal-card-image" style="background-image: url(https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80)"></div>
 
-              <div class="flex">
+            <div class="meal-card-content">
+              <div class="meal-card-title"><h4><%= meal.name %></h4></div>
+                <p><%= meal.description %></p>
 
-                <div class="flex"><i class="material-icons mr-2">people</i><span><%= meal.quantity_max %></span></div>
-                <div class="flex ml-3"><i class="material-icons mr-2">euro_symbol</i> <%= meal.unit_price %></div>
+                <div class="flex">
 
-              </div>
-          </div>
-      </div>
+                  <div class="flex"><i class="material-icons mr-2">people</i><span><%= meal.quantity_max %></span></div>
+                  <div class="flex ml-3"><i class="material-icons mr-2">euro_symbol</i> <%= meal.unit_price %></div>
+
+                </div>
+            </div>
+        </div>
+      <% end %>
 
     </div>
   <% end %>
