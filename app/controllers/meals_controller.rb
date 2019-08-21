@@ -1,7 +1,16 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :edit, :view_my_meals, :view_my_meal, :update]
+  before_action :set_meal, only: [:show, :edit, :update]
   def index
-    @meals = Meal.all
+    @meals = Meal.geocoded
+
+    @markers = @meals.map do |meal|
+      {
+        lat: meal.latitude,
+        lng: meal.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { meal: meal }),
+        image_url: helpers.asset_url('carottes.png')
+      }
+    end
   end
 
   def view_my_meals
@@ -26,7 +35,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.user = current_user
     if @meal.save
-      redirect_to meal_path(@meal)
+      redirect_to my_meal_path(@meal)
     else
       render :new
     end
