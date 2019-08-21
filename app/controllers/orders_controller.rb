@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @order.meal = @meal
     if @order.save
       flash[:notice] = "Your order has been successfully created!"
-      redirect_to meal_path(@order.meal)
+      redirect_to my_orders_path
     else
       render 'meals/show'
     end
