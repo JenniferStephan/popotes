@@ -1,19 +1,27 @@
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin: 0 120px;
+}
+
 .category-container {
   display: flex;
   height: 50px;
   justify-content: flex-start;
 }
 
-.category-item {
-  width: 200px;
+.home-container .card-category {
+  height: 160px;
+  display: flex;
   align-items: center;
-  margin-right: 25px;
+  justify-content: center;
 }
 
 .card-category {
   background-size: cover;
   background-position: center;
-  height: 50px;
+  text-align: center;
   color: white;
   padding: 10px 15px;
   font-size: 16px;
@@ -23,4 +31,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-
+.category-item {
+  margin-right: 25px;
+  width: 200px;
+}

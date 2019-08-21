@@ -1,21 +1,21 @@
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
-  <a class="navbar-brand d-none d-sm-block" href="#">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
-  </a>
+  <%= link_to root_path do %>
+    <img class="logo" src="<%= image_path('PO-POTES.png') %>"/>
+  <% end %>
 
-  <div class="searching">
+<!--   <div class="searching">
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-form-control form-group d-flex">
         <input class="form-control input-large string required" type="text" name="search[query]" id="search_query" />
 
         <button name="button" type="submit" class="btn btn-flat">
-          <i class="fas fa-search"></i> Search
+          <i class="fas fa-search"></i>
         </button>
       </div>
     <% end %>
-  </div>
+  </div> -->
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -40,9 +40,9 @@
         <%= link_to "Log out", destroy_user_session_path, class: "nav-link d-block d-sm-none" %>
       </li>
 
-      <li class="dropdown align-self-center d-none d-sm-block">
+      <li class="dropdown align-self-center d-none d-sm-block mr-3">
         <button class="dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Kitchen
+          My kitchen
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <%= link_to "Add a meal", new_meal_path, class: "dropdown-item" %>
@@ -52,7 +52,6 @@
           <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
         </div>
       </li>
-
 
       <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle d-none d-sm-block", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
