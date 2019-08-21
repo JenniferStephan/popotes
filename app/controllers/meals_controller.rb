@@ -2,7 +2,7 @@ class MealsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_meal, only: [:show, :edit, :view_my_meals, :update]
-  
+
   def index
     @meals = Meal.geocoded
 
@@ -38,7 +38,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.user = current_user
     if @meal.save
-      redirect_to my_meal_path(@meal)
+      redirect_to meal_path(@meal)
     else
       render :new
     end
