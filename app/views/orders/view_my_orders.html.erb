@@ -1,14 +1,17 @@
+<div class="ml-3 mt-3">
+    <h1>My orders</h1>
+</div>
 
-<h1>My orders</h1>
+    <% @my_orders.each do |order| %>
+      <div class="card-items">
+        <%= cl_image_tag order.meal.photo, crop: :fill %>
+        <div class="card-item-infos">
+            <h2><%= order.meal.name %></h2>
+            <h5>🗓 Ordered on the <strong><%= order.pick_up_date %></strong></h5>
+            <h5>Cooked with ❤️ by <strong><%= order.user.username %></strong></h5>
+            <h5>To be shared with <strong><%= order.order_quantity %></strong> friends 👨‍👩‍👧 </h5>
+            <h2><%= order.order_quantity * order.meal.unit_price%> euros</h2>
+        </div>
+      </div>
+    <% end %>
 
-
-<% @my_orders.each do |order| %>
-  <div class="card-items">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-item-infos">
-      <h2><%= order.order_quantity %></h2>
-      <h2><%= order.meal.user_id %></h2>
-      <p><%= order.user.username %><%=  order.meal.name %></p>
-    </div>
-  </div>
-<% end %>
