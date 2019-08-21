@@ -43,7 +43,7 @@ Meal.create!(
   description: 'A delicious soup',
   unit_price: 6,
   quantity_max: 3,
-  user_id: 1
+  user_id: User.first
 )
 
 Meal.create!(
@@ -53,7 +53,7 @@ Meal.create!(
   description: 'A Healthy salad',
   unit_price: 5,
   quantity_max: 3,
-  user_id: 1
+  user_id: User.last
 )
 
 Meal.create!(
@@ -63,33 +63,33 @@ Meal.create!(
   description: 'A Healthy salad',
   unit_price: 5,
   quantity_max: 4,
-  user_id: 3
+  user_id: User.first
 )
 
 
 Order.create!(
   order_quantity: 1,
   pick_up_date: '2019-08-20',
-  user_id: 2,
-  meal_id: 3,
+  user_id: User.first,
+  meal_id: Meal.last,
 )
 
 Order.create!(
   order_quantity: 3,
   pick_up_date: '2019-08-23',
-  user_id: 1,
-  meal_id: 2,
+  user_id: User.first,
+  meal_id: Meal.last,
 )
 
 Order.create!(
   order_quantity: 2,
   pick_up_date: '2019-08-23',
-  user_id: 3,
-  meal_id: 1,
+  user_id: User.last,
+  meal_id: Meal.first,
 )
 
-ingredients = ["Céréales contenant du gluten", "Crustacés", "Oeufs", "Poissons", "Arachides", "Soja", "Lait", "Fruits à coques", "Céleri", "Moutarde", "Graines de sésame"]
+# ingredients = ["Céréales contenant du gluten", "Crustacés", "Oeufs", "Poissons", "Arachides", "Soja", "Lait", "Fruits à coques", "Céleri", "Moutarde", "Graines de sésame"]
 
-ingredients.each do |i|
-  Ingredient.create(name: i)
-end
+# ingredients.each do |i|
+#   Ingredient.create(name: i)
+# end
