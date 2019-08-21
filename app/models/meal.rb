@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
   belongs_to :user
-  has_many :orders
-  has_many :meal_ingredients
+  has_many :orders, dependent: :destroy
+  has_many :meal_ingredients, dependent: :destroy
   has_many :ingredients, through: :meal_ingredients
   has_many :eater_users, through: :orders, source: :user
 
