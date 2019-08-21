@@ -13,6 +13,7 @@ class MealsController < ApplicationController
   @my_meal = @my_meals.find(params[:id])
   end
 
+
   def show
     @meal = Meal.find(params[:id])
     @order = Order.new

@@ -3,8 +3,8 @@
 
 
 <% @my_meals.each do |meal| %>
-  <div class="card-items">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-items" >
+    <%= cl_image_path meal.photo %>
     <div class="card-item-infos">
       <h2><%= meal.name %></h2>
       <p><%= meal.description %><%=  meal.quantity_max %></p>
