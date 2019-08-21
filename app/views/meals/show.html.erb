@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: url('<%= cl_image_path @meal.photo %>')">
+<div class="meal-banner" style="background-image: url('<%= cl_image_path @meal.photo %>')">
 
 </div>
 
@@ -19,6 +19,13 @@
       <div class="meal_text">
         <p><%= @meal.description %></p>
       </div>
+      <div class="allergies">
+        <ul>
+            <% @meal.ingredients.each do |ingredient| %>
+              <li><%= ingredient.name %> </li>
+            <% end %>
+          </ul>
+        </div>
     </div>
 
     <% if @meal.user != current_user %>
@@ -35,16 +42,13 @@
       </div>
     </div>
     <% else %>
-      <p>
-        <%= link_to 'ajouter allergène', new_meal_meal_ingredient_path(@meal) %>
-      </p>
-    <% end %>
-
-      <ul>
-        <% @meal.ingredients.each do |ingredient| %>
-          <li><%= ingredient.name %> </li>
-        <% end %>
-      </ul>
+    <div class="col-4">
+      <div class="d-flex py-3 justify-content-center">
+        <p>
+          <%= link_to 'Ajouter allergène', new_meal_meal_ingredient_path(@meal),  class: "button" %>
+        </p>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
