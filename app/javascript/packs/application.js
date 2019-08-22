@@ -46,5 +46,23 @@ document.addEventListener('click', (event) => {
 });
 }
 
+if
+const portionOrdered = document.querySelector('.order-count').innerText;
+console.log(portionOrdered);
+
+if (portionOrdered == 0) {
+  const changeClass = () => {
+  const element = document.querySelector(".meal-card");
+  element.classList.add("mealcard-disabled");
+  };
+  changeClass();
+}
+
+// let condition = (portionOrdered == "0");
+// const element = document.querySelector(".meal-card");
+
+// let changeClass = element.classList.toggle('meal-card-disabled', !!condition);
+// console.log(changeClass);
+
 
 
