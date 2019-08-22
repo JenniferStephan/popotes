@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_08_22_144430) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_144430) do
     t.string "address"
     t.integer "unit_price"
     t.integer "quantity_max"
-    t.date "start_availability_date"
+    t.date "start_availability_date", default: "2019-08-20"
     t.date "end_availability_date"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -50,7 +51,9 @@ ActiveRecord::Schema.define(version: 2019_08_22_144430) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "order_quantity"
-    t.date "pick_up_date", default: "2019-08-21"
+
+    t.date "pick_up_date", default: "2019-08-22"
+
     t.text "order_comment"
     t.bigint "user_id"
     t.bigint "meal_id"
@@ -60,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_144430) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -67,6 +71,17 @@ ActiveRecord::Schema.define(version: 2019_08_22_144430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "meal_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_reviews_on_meal_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,4 +102,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_144430) do
   add_foreign_key "meals", "users"
   add_foreign_key "orders", "meals"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "meals"
+  add_foreign_key "reviews", "users"
 end
