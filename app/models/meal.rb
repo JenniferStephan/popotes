@@ -4,8 +4,9 @@ class Meal < ApplicationRecord
   has_many :meal_ingredients, dependent: :destroy
   has_many :ingredients, through: :meal_ingredients
   has_many :eater_users, through: :orders, source: :user
+  has_many :reviews
 
-  CATEGORIES = ["Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
+  CATEGORIES = ["Chinese", "Healthy", "Morroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan", "French"]
 
   validates :name, presence: true
   validates :description, presence: true
