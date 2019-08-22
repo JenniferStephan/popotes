@@ -1,8 +1,8 @@
+Review.destroy_all
 User.destroy_all
 Meal.destroy_all
 Order.destroy_all
 Ingredient.destroy_all
-Review.destroy_all
 
 w = User.create!(
   username: 'Winnie',
