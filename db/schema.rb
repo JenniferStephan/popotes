@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_21_121543) do
+ActiveRecord::Schema.define(version: 2019_08_22_085253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_121543) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "order_quantity"
-    t.date "pick_up_date", default: "2019-08-21"
+    t.date "pick_up_date", default: "2019-08-22"
     t.text "order_comment"
     t.bigint "user_id"
     t.bigint "meal_id"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 2019_08_21_121543) do
     t.datetime "updated_at", null: false
     t.index ["meal_id"], name: "index_orders_on_meal_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "meal_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_reviews_on_meal_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,4 +89,6 @@ ActiveRecord::Schema.define(version: 2019_08_21_121543) do
   add_foreign_key "meals", "users"
   add_foreign_key "orders", "meals"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "meals"
+  add_foreign_key "reviews", "users"
 end

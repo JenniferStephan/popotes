@@ -2,6 +2,7 @@ User.destroy_all
 Meal.destroy_all
 Order.destroy_all
 Ingredient.destroy_all
+Review.destroy_all
 
 w = User.create!(
   username: 'Winnie',
@@ -39,7 +40,6 @@ soup = Meal.new(
 )
 soup.remote_photo_url = "https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/simply-asia/e/2000/egg_drop_noodle_soup_2000x1125.jpg?vd=20180710T052728Z&hash=3796EEE4205BCF5842BBFC0A9E79DD4A82679CF8"
 soup.save!
-
 
 salad = Meal.new(
   name: 'Ceasar salad',
@@ -135,6 +135,10 @@ ingredients.each do |i|
   Ingredient.create!(name: i)
 end
 
-
-
+Review.create!(
+  rating: 4,
+  content: "super bon poulet rôti comme chez Mamie, avec de la purée de patates ça envoie du lourd",
+  user: j,
+  meal: poulet_roti,
+ )
 

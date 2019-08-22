@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get "/my_orders", to: "orders#view_my_orders", as: "my_orders"
   resources :meals do
     resources :meal_ingredients, only: [:new, :create]
+    resources :reviews, only: [ :new, :create ]
   end
 end
