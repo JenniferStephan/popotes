@@ -1,13 +1,3 @@
-.flex {
-  display: flex;
-}
-
-.flex-align {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .meal-card {
   width: 100%;
   position: relative;
@@ -26,19 +16,57 @@
   box-shadow: 0 0 30px rgba(0,0,0,0.2);
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+.meal-info {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+}
+
 .meal-card-image {
   height: 180px;
   background-position: center;
   background-size: cover;
 }
 
+.meal-card-image span {
+  opacity: 0;
+}
+
 .meal-card-content {
   padding: 24px;
   text-decoration: none;
   background-color: #F8F9FA;
+  height: 200px;
 }
 
-a:hover {
-  text-decoration: none;
+.meal-card-title {
+  position: top;
 }
+
+.flex {
+  display: flex;
+  position: bottom;
+  justify-content: align-items;
+}
+
+.flex-align {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grey {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(150, 150, 150, 0);
+}
+
+
 

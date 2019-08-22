@@ -1,11 +1,26 @@
 class Meal < ApplicationRecord
+  include PgSearch::Model
   belongs_to :user
   has_many :orders, dependent: :destroy
   has_many :meal_ingredients, dependent: :destroy
   has_many :ingredients, through: :meal_ingredients
   has_many :eater_users, through: :orders, source: :user
+  has_many :reviews
 
-  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma", "Italian", "Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
+
+  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma", "Italian", "Healthy", "Moroccan", "Burger", "Vegan", "Thaï", "Hawaïan"]
+
+
+  pg_search_scope :global_search,
+    against: [ :name, :description, :category ],
+    associated_against: {
+      user: [ :username]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
+
 
   validates :name, presence: true
   validates :description, presence: true

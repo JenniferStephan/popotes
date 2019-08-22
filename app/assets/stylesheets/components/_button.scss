@@ -8,6 +8,16 @@
   width: 100%;
 }
 
+.little-button-yellow {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #F8E865;
+  transition: background 0.3s ease;
+  opacity: 1;
+  width: 40;
+}
+
 .button:hover {
   color: white;
   opacity: 0.8;

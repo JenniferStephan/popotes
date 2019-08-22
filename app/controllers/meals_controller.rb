@@ -1,10 +1,21 @@
 class MealsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
+
   def index
-    @meals = Meal.geocoded
+    @query = params[:query]
+    @query_on_category = params[:category]
+
+    if @query.present?
+      @meals = Meal.geocoded.global_search(params[:query])
+    elsif @query_on_category.present?
+      categories = @query_on_category.select { |k, v| v == '1' }.keys
+      @meals = Meal.geocoded.select { |m| categories.include?(m.category) }
+    else
+      @meals = Meal.geocoded
+  end
+
 
     @markers = @meals.map do |meal|
       {

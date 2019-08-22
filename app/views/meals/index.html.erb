@@ -1,22 +1,47 @@
 <div class="container mt-3 ">
+
+<!-- Search form -->
+<!-- the user can search on :
+- ingredients : name
+- meal : name, category, description
+- user : username
+si tps restant :
+filtres sur "dates", "prix", "category" -->
+
+
+<%= render '/shared/search-bar' %>
+
+
 <!--   <h2>Category is...</h2> -->
 
-  <div class="category-container">
 
-    <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Breakfast
+    <h5>Search by...</h4>
+
+    <div class="category-container">
+      <div class="category-item mt-3 mb-5 border-none dropdownMenuButton" type="button" data-toggle="dropdown"  aria-expanded="false">
+        <div class="card-category" style="background-color: #E89972">
+          Category
+        </div>
       </div>
-    </div>
 
-    <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Last minute deals
-      </div>
-    </div>
+<!--       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%# Meal::CATEGORIES.each do |category| %>
+        <li>
+        <%#= link_to category, meals_path(:query => category), class: "dropdown-item" %>
+        </li>
+        <%# end %>
+      </div> -->
 
-    <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <%= simple_form_for :category, url: meals_path, method: :get do |f| %>
+        <%#= f.input 'Chinese', as: :boolean %>
+      <% Meal::CATEGORIES.each do |category| %>
+        <%= f.input category, as: :boolean %>
+      <% end %>
+      <%= f.submit %>
+    <% end %>
+
+    <div class="category-item mt-3 mb-5">
+      <div class="card-category" style="background-color: #26303D">
         Today's meals
       </div>
     </div>
@@ -25,12 +50,40 @@
 
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
-<div class="container mt-3">
+<div class="container mt-5">
 <!--   <h1>All the meals available</h1> -->
 
 <!-- dynamic count according to the search -->
+<div class="row">
+    <div class="col">
+      <% if @query %>
+        <h5>You searched for <strong><%= @query %></strong>. <%=pluralize(@meals.count,'meal')%> out of the <%= Meal.count %> available on our marmite.🍴</h5>
+      <% else %>
+        <h5>🍗 All <%= Meal.count %> meals.🍗</h5>
+      <% end %>
+    </div>
+  </div>
 
 <!-- mosaic of meals -->
 
@@ -40,22 +93,39 @@
 
 
       <%= link_to meal_path(meal) do %>
-        <div class="meal-card">
 
-          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')"></div>
+        <div class="meal-card mt-10">
 
-            <div class="meal-card-content">
-              <div class="meal-card-title"><h4><%= meal.name %></h4></div>
-                <p><%= meal.description %></p>
 
-                <div class="flex">
+
 
                   <div class="flex"><i class="material-icons mr-2">people</i><span><%= meal.quantity_max %></span></div>
                   <div class="flex ml-3 count"><span> Reste </span><div class="order-count"> <%= meal.left_quantity %> </div></div>
                   <div class="flex ml-3"><i class="material-icons mr-2">euro_symbol</i> <%= meal.unit_price %></div>
 
-                </div>
+        <div class="meal-card">
+
+          <div class="grey">
+          </div>
+
+          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')">
+            <span class="badge badge-pill badge-warning">Sold Out</span>
+          </div>
+
+
+          <div class="meal-card-content">
+            <div class="meal-card-title">
+              <h4><%= meal.name %></h4>
             </div>
+              <p><%= meal.description %></p>
+            <div class="meal-info">
+              <div class="flex"><i class="material-icons mr-2">people</i><span><%= meal.quantity_max %></span>
+              </div>
+              <div class="flex ml-3"><i class="material-icons mr-2">euro_symbol</i> <%= meal.unit_price %>
+              </div>
+            </div>
+          </div>
+
         </div>
       <% end %>
 
