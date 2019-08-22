@@ -1,5 +1,4 @@
 <div class="meal-banner" style="background-image: url('<%= cl_image_path @meal.photo %>')">
-
 </div>
 
 <div class="container py-2">
@@ -8,48 +7,82 @@
       <div class="meal_header d-flex justify-content-between py-3 border-bottom">
         <div class="meal_big_titles">
           <h1><%= @meal.name.capitalize %></h1>
-          <h3 class=""><%= @meal.category %></h3>
+          <p class="meal_category_badge"><%= @meal.category %></p>
         </div>
         <div class="user_pic_and_name d-flex flex-column align-items-center">
-          <img src="https://resize-parismatch.lanmedia.fr/img/var/news/storage/images/paris-match/people-a-z/javier-bardem/6033180-8-fre-FR/Javier-Bardem.jpg" alt="" class="">
+          <% if @meal.user.photo? %>
+            <%= cl_image_tag @meal.user.photo, gravity: :face, crop: :thumb %>
+          <% else %>
+            <img src="https://www.getdigital.fr/web/getdigital/gfx/products/__generated__resized/380x380/Aufkleber_Trollface.jpg" alt="">
+          <% end %>
           <p><%= @meal.user.username %></p>
         </div>
       </div>
 
-      <div class="meal_text">
-        <p><%= @meal.description %></p>
+
+      <div class="meal_text py-3">
+        <%= simple_format(@meal.description) %>
         <p> Nombre de parts max : <%= @meal.quantity_max %> </p>
+
       </div>
       <div class="allergies">
         <ul>
-            <% @meal.ingredients.each do |ingredient| %>
-              <li><%= ingredient.name %> </li>
-            <% end %>
-          </ul>
+          <% @meal.ingredients.each do |ingredient| %>
+            <li><%= ingredient.name %> </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="reviews-section py-3 border-top">
+        <div class="review-global-rating d-flex align-items-center">
+          <% if @meal.reviews.present? %>
+            <h3 class="pb-2 mr-3">Reviews</h3>
+            <% @meal.rating_average.floor.times do %>
+              <i class="fas fa-star"></i>
+          <% end %>
+          <% if @meal.rating_average % 1 != 0 %>
+            <i class="fas fa-star-half"></i>
+          <% end %>
         </div>
+        <% @meal.reviews.each do |review| %>
+            <div class="review d-flex flex-column py-3 border-bottom">
+              <div class="d-flex align-items justify-content-between">
+                <p class="review-author"><%= review.user.username %></p>
+                <div class="review-author-and-desc">
+                  <% review.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - review.rating).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                </div>
+              </div>
+              <p class="review-desc"><%= review.content %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
     <% if @meal.user != current_user %>
-    <div class="col-4">
-      <div class="checkout card p-3 sticky-top">
-        <p class="d-flex py-3 border-bottom"> <span class="price-per-serving"><%= @meal.unit_price %> </span>
-         € /serving <span class="total-price" data-meal="<%= @meal.to_json %>"> </span> €</p>
+      <div class="col-4">
+        <div class="checkout card p-3 sticky-top">
+          <p class="d-flex py-3 border-bottom"> <span class="price-per-serving"><%= @meal.unit_price %> </span>
+           € /serving <span class="total-price" data-meal="<%= @meal.to_json %>"></span>€</p>
           <%= simple_form_for(@order) do |f| %>
             <%= hidden_field_tag :meal_id, @meal.id %>
             <%= f.input :pick_up_date %>
             <%= f.input :order_quantity %>
             <%= f.button :submit, class: "button" %>
           <% end %>
+        </div>
       </div>
-    </div>
     <% else %>
-    <div class="col-4">
-      <div class="d-flex py-3 justify-content-center">
-        <p>
+      <div class="col-4">
+        <div class="d-flex py-3 justify-content-center">
           <%= link_to 'Ajouter allergène', new_meal_meal_ingredient_path(@meal),  class: "button" %>
-        </p>
-      <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
