@@ -95,9 +95,6 @@ filtres sur "dates", "prix", "category" -->
       <%= link_to meal_path(meal) do %>
 
         <div class="meal-card mt-10">
-
-
-
         <div class="meal-card">
 
           <div class="grey">
@@ -111,7 +108,7 @@ filtres sur "dates", "prix", "category" -->
             <div class="meal-card-title">
               <h4><%= meal.name %></h4>
             </div>
-              <p><%= meal.description %></p>
+              <p><%= meal.category %></p>
             <div class="meal-info">
               <div class="flex"><i class="material-icons mr-2">people</i><span><%= meal.quantity_max %></span>
               </div>
