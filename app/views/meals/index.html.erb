@@ -40,21 +40,30 @@
 
 
       <%= link_to meal_path(meal) do %>
+
+
         <div class="meal-card">
 
-          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')"></div>
+          <div class="grey">
+          </div>
 
-            <div class="meal-card-content">
-              <div class="meal-card-title"><h4><%= meal.name %></h4></div>
-                <p><%= meal.description %></p>
+          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')">
+            <span class="badge badge-pill badge-warning">Sold Out</span>
+          </div>
 
-                <div class="flex">
-
-                  <div class="flex"><i class="material-icons mr-2">people</i><span><%= meal.quantity_max %></span></div>
-                  <div class="flex ml-3"><i class="material-icons mr-2">euro_symbol</i> <%= meal.unit_price %></div>
-
-                </div>
+          <div class="meal-card-content">
+            <div class="meal-card-title">
+              <h4><%= meal.name %></h4>
             </div>
+              <p><%= meal.description %></p>
+            <div class="meal-info">
+              <div class="flex"><i class="material-icons mr-2">people</i><span><%= meal.quantity_max %></span>
+              </div>
+              <div class="flex ml-3"><i class="material-icons mr-2">euro_symbol</i> <%= meal.unit_price %>
+              </div>
+            </div>
+          </div>
+
         </div>
       <% end %>
 
