@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_085253) do
     t.string "name"
     t.text "description"
     t.string "category"
-    t.text "address"
+    t.string "address"
     t.integer "unit_price"
     t.integer "quantity_max"
     t.date "start_availability_date"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_085253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 

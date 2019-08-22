@@ -1,23 +1,31 @@
 .card-items {
   overflow: hidden;
-  height: 120px;
+  height: 200px;
+  width: 1100px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin: 20px;
 }
 
 .card-items img {
   height: 100%;
-  width: 120px;
+  width: 200px;
   object-fit: cover;
 }
 
 .card-items h2 {
-  font-size: 16px;
+  font-size: 25px;
   font-weight: bold;
-  margin: 0;
+  padding: 3px;
+}
+
+.card-items h5 {
+  font-size: 18px;
+  font-weight: lighter;
+  padding: 2px;
+  font-family: $body-font;
 }
 
 .card-items p {

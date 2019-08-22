@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: url('<%= cl_image_path @meal.photo %>')">
+<div class="meal-banner" style="background-image: url('<%= cl_image_path @meal.photo %>')">
 
 </div>
 
@@ -19,11 +19,20 @@
       <div class="meal_text">
         <p><%= @meal.description %></p>
       </div>
+      <div class="allergies">
+        <ul>
+            <% @meal.ingredients.each do |ingredient| %>
+              <li><%= ingredient.name %> </li>
+            <% end %>
+          </ul>
+        </div>
     </div>
 
+    <% if @meal.user != current_user %>
     <div class="col-4">
       <div class="checkout card p-3 sticky-top">
-        <p class="d-flex py-3 border-bottom"><strong><%= @meal.unit_price %>€ </strong> /serving</p>
+        <p class="d-flex py-3 border-bottom"> <span class="price-per-serving"><%= @meal.unit_price %> </span>
+         € /serving <span class="total-price" data-meal="<%= @meal.to_json %>"> </span> €</p>
           <%= simple_form_for(@order) do |f| %>
             <%= hidden_field_tag :meal_id, @meal.id %>
             <%= f.input :pick_up_date %>
@@ -32,8 +41,14 @@
           <% end %>
       </div>
     </div>
-  <!--   <div class="location">
-
-    </div> -->
+    <% else %>
+    <div class="col-4">
+      <div class="d-flex py-3 justify-content-center">
+        <p>
+          <%= link_to 'Ajouter allergène', new_meal_meal_ingredient_path(@meal),  class: "button" %>
+        </p>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>

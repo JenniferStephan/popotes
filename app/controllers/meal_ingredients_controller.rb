@@ -9,7 +9,7 @@ class MealIngredientsController < ApplicationController
     params[:ingredient].each do |ingredient|
       MealIngredient.create(ingredient: Ingredient.find_by_name(ingredient), meal: @meal)
     end
-    redirect_to my_meal_path(@meal)
+    redirect_to meal_path(@meal)
   end
 
   private

@@ -1,9 +1,19 @@
 class MealsController < ApplicationController
+
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_meal, only: [:show, :edit, :view_my_meals, :view_my_meal, :update]
+  before_action :set_meal, only: [:show, :edit, :view_my_meals, :update]
 
   def index
-    @meals = Meal.all
+    @meals = Meal.geocoded
+
+    @markers = @meals.map do |meal|
+      {
+        lat: meal.latitude,
+        lng: meal.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { meal: meal }),
+        image_url: helpers.asset_url('carottes.png')
+      }
+    end
   end
 
   def show

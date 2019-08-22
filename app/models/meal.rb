@@ -6,7 +6,8 @@ class Meal < ApplicationRecord
   has_many :eater_users, through: :orders, source: :user
   has_many :reviews
 
-  CATEGORIES = ["Chinese", "Healthy", "Morroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan", "French"]
+
+  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma " "Italian", "Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
 
   validates :name, presence: true
   validates :description, presence: true
@@ -17,4 +18,7 @@ class Meal < ApplicationRecord
   # validates :start_availability_date, presence: true
   # validates :end_availability_date, presence: true
   mount_uploader :photo, PhotoUploader
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
