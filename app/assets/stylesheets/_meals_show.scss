@@ -10,6 +10,22 @@
   height: 70px;
 }
 
+.meal_big_titles h3 {
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.meal_category_badge {
+  border-radius: 20px;
+  color: white;
+  background: #eb7070;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 100;
+  padding: 3px 4px;
+  margin-top: 15px;
+}
+
 .meal_text {
   padding-top: 40px;
 }
@@ -27,4 +43,14 @@
 
 .allergies ul {
   list-style: none;
+}
+
+.review-global-rating h3 {
+  margin: 0;
+  padding: 0 !important;
+}
+
+.review-author {
+  text-transform: uppercase;
+  font-weight: 400;
 }

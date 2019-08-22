@@ -4,29 +4,77 @@ Meal.destroy_all
 Order.destroy_all
 Ingredient.destroy_all
 
-w = User.create!(
+w = User.new(
   username: 'Winnie',
   email: 'ourson@gmail.com',
   password: 'testtest3',
 )
+w.remote_photo_url = "https://cdn.laredoute.com/products/641by641/5/1/7/5173a1ef9786d4eb7244f3be6891629e.jpg"
+w.save!
 
-j = User.create!(
+j = User.new(
   username: "Javier B.",
   email: "javier@sexy.com",
   password: "bailar"
 )
+j.remote_photo_url = "https://resize-parismatch.lanmedia.fr/img/var/news/storage/images/paris-match/people-a-z/javier-bardem/6033180-8-fre-FR/Javier-Bardem.jpg"
+j.save!
 
-t = User.create!(
+t = User.new(
   username: 'Tinkie Winky',
   email: 'titi@gmail.com',
   password: 'testtest4',
 )
+t.remote_photo_url = "https://images3.persgroep.net/rcs/C-VymSOxAsrysdoiqEc5oqsue_E/diocontent/148201145/_crop/0/0/1153/650/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.9"
+t.save!
 
-p = User.create!(
+p = User.new(
   username: 'Paquito',
   email: 'pepito@gmail.com',
   password: 'testtest5',
 )
+p.remote_photo_url = "http://img.over-blog-kiwi.com/0/82/53/64/20170904/ob_474a15_photo.jpg"
+p.save!
+
+d = User.new(
+  username: 'Johnny Deep',
+  email: 'verydeep@gmail.com',
+  password: 'testtest6',
+)
+d.remote_photo_url = "https://file1.closermag.fr/var/closermag/storage/images/bio-people/biographie-johnny-depp-112279/815563-1-fre-FR/Johnny-Depp_square500x500.jpg"
+d.save!
+
+a = User.new(
+  username: 'Toinou du 78',
+  email: 'toinou@gmail.com',
+  password: 'testtest7',
+)
+a.remote_photo_url = "http://djschoolmetz.com/wp-content/uploads/2017/06/illustration-djschool_wide2.jpg"
+a.save!
+
+jenni = User.new(
+  username: 'Jenni',
+  email: 'sachaychantey@gmail.com',
+  password: 'testtest8',
+)
+jenni.remote_photo_url = "https://i0.wp.com/www.potins.net/wp-content/uploads/2019/08/jennifer-lopez-s-affiche-en-bikini-et-devoile-ses-abdos-de-folie_a5a099fb3fa6ef258ddadaeeb3ba18272c367f67.jpg?resize=800%2C600&ssl=1"
+jenni.save!
+
+aurore = User.new(
+  username: 'Malval',
+  email: 'iloveclermont@gmail.com',
+  password: 'testtest9',
+)
+aurore.remote_photo_url = "https://pbs.twimg.com/profile_images/950897538126831616/W2tzbF3H.jpg"
+aurore.save!
+
+cam = User.new(
+  username: 'Cameamea',
+  email: 'otaku@gmail.com',
+  password: 'testtest10',
+)
+cam.remote_photo_url = "https://toiledefond.net/wp-content/uploads/2015/06/10730205_10205183883742803_2597696856186401850_n.jpg"
+cam.save!
 
 
 soup = Meal.new(
@@ -45,7 +93,7 @@ salad = Meal.new(
   name: 'Ceasar salad',
   address: '200 rue de Rivoli, Paris',
   category: 'Healthy',
-  description: 'A Healthy salad',
+  description: 'A healthy salad',
   unit_price: 5,
   quantity_max: 3,
   user: t
@@ -57,7 +105,7 @@ vegsalad = Meal.new(
   name: 'Vege salad',
   address: '10 villa Gaudelet, Paris',
   category: 'Healthy',
-  description: 'A Healthy salad',
+  description: 'For vegetables lovers',
   unit_price: 5,
   quantity_max: 4,
   user: j
@@ -67,12 +115,12 @@ vegsalad.save!
 
 pizza_margarita = Meal.new(
   name: 'Pizza margarita',
-  address: '135 aveneue de Versailles',
+  address: '135 avenue de Versailles',
   category: 'Italian',
-  description: 'Home-made pizza',
+  description: 'Home-made pizza with stuff I bought at the supermarket',
   unit_price: 5,
   quantity_max: 6,
-  user: t
+  user: jenni,
 )
 pizza_margarita.remote_photo_url = "https://assets.afcdn.com/recipe/20170105/24149_w1024h768c1cx2592cy1728.jpg"
 pizza_margarita.save!
@@ -84,21 +132,21 @@ pad_thai = Meal.new(
   description: 'Home street food',
   unit_price: 4,
   quantity_max: 8,
-  user: t
+  user: w,
 )
 pad_thai.remote_photo_url = "https://minimalistbaker.com/wp-content/uploads/2019/01/Easy-Vegan-Pad-Thai-SQUARE.jpg"
 pad_thai.save!
 
 poulet_roti = Meal.new(
-  name: 'Poulet roti',
+  name: 'Poulet rôti',
   address: '55 rue de Passy',
   category: 'French',
-  description: 'Façon grand Maman',
+  description: "Enorme poulet fermier façon Grand Maman, d'ailleurs je suis grand-mère mais comme mes petits enfants ces sales ingrats m'appellent jamais je m'ennuie et je fais à bouffer pour 15. \n \n Je précise que c'est bio (j'achète toujours bio pour préserver mon mari qui a la goutte sinon après il gueule comme un putois), en plus je préfère consommer local pour compenser le fait que ma génération ait complètement détruit la planète lol",
   unit_price: 5,
   quantity_max: 4,
-  user: t
+  user: d,
 )
-poulet_roti.remote_photo_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAT0UjVxccv4Grht-DVsSni6LPiu-IygXv0RsT9noGo42g-q50"
+poulet_roti.remote_photo_url = "https://images.pexels.com/photos/265393/pexels-photo-265393.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 poulet_roti.save!
 
 Order.create!(
@@ -138,7 +186,34 @@ end
 Review.create!(
   rating: 4,
   content: "super bon poulet rôti comme chez Mamie, avec de la purée de patates ça envoie du lourd",
-  user: j,
+  user: aurore,
   meal: poulet_roti,
- )
+)
 
+Review.create!(
+  rating: 5,
+  content: "c'était tellement bon que j'en ai recommandé et aussi je l'ai recommandé à tous mes amis",
+  user: p,
+  meal: poulet_roti,
+)
+
+Review.create!(
+  rating: 3,
+  content: "c'est moins bon qu'au KFC",
+  user: jenni,
+  meal: poulet_roti,
+)
+
+Review.create!(
+  rating: 1,
+  content: "je me suis trompé je voulais un sashimi aubergine en fait",
+  user: cam,
+  meal: poulet_roti,
+)
+
+Review.create!(
+  rating: 4,
+  content: "COT COOOOT haha",
+  user: a,
+  meal: poulet_roti,
+)
