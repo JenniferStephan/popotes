@@ -5,7 +5,7 @@ class Meal < ApplicationRecord
   has_many :ingredients, through: :meal_ingredients
   has_many :eater_users, through: :orders, source: :user
 
-  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma " "Italian", "Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
+  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma", "Italian", "Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
 
   validates :name, presence: true
   validates :description, presence: true
@@ -19,4 +19,16 @@ class Meal < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def can_delete?
+    !self.orders.pluck(:status).include?('accepted')
+  end
+
+  def left_quantity
+    if !can_delete?
+      self.quantity_max - self.orders.where(status: "accepted").pluck(:order_quantity).reduce(:+)
+    else
+      self.quantity_max
+    end
+  end
 end

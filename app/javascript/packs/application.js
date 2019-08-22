@@ -45,3 +45,6 @@ document.addEventListener('click', (event) => {
   additionTotal();
 });
 }
+
+
+

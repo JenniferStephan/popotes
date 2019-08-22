@@ -3,6 +3,6 @@
   <%= simple_form_for [@meal, @meal_ingredient] do |f| %>
     <%#= f.association :ingredient, label: "Faites dérouler la liste" %>
     <%= f.input :ingredient, collection: Ingredient::ALLERGIES, input_html: { class: "js-example-basic-multiple", name: "ingredient[]", multiple: "multiple" } %>
-    <%= f.submit %>
+    <%= f.submit "Ajouter au plat" %>
   <% end %>
 </div>

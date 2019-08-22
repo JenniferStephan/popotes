@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_meal, only: [:show, :edit, :view_my_meals, :update]
+  before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
     @meals = Meal.geocoded
@@ -23,7 +23,16 @@ class MealsController < ApplicationController
 
   def view_my_meals
     @my_meals = Meal.where(user: current_user)
+
+    my_received_orders = []
+    @my_meals.each do |meal|
+      my_received_orders << meal.orders
+    end
+
+    @my_received_orders = my_received_orders.flatten
   end
+
+
 
   def view_my_meal
     @my_meals = Meal.where(user: current_user)
@@ -50,6 +59,11 @@ class MealsController < ApplicationController
   def update
     @meal.update(meal_params)
     redirect_to meal_path(@meal)
+  end
+
+  def destroy
+    @meal.destroy
+    redirect_to my_meals_path
   end
 
   private
