@@ -34,13 +34,18 @@
           My kitchen
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if user_signed_in? %>
           <%= link_to "Add a meal", new_meal_path, class: "dropdown-item" %>
           <%= link_to "My meals", my_meals_path, class: "dropdown-item" %>
           <%= link_to "My orders", my_orders_path, class: "dropdown-item" %>
           <%= link_to "My profile", "#", class: "dropdown-item d-block d-sm-none" %>
-          <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <% end %>
         </div>
       </li>
+
 
       <li class="nav-item dropdown">
           <%= image_tag "https://resize-parismatch.lanmedia.fr/img/var/news/storage/images/paris-match/people-a-z/javier-bardem/6033180-8-fre-FR/Javier-Bardem.jpg", class: "avatar dropdown-toggle d-none d-sm-block", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -48,6 +53,7 @@
           <%= link_to "My profile", "#", class: "dropdown-item" %>
           <%= link_to "Log out", "#", class: "dropdown-item" %>
         </div>
+
       </li>
     </ul>
   </div>

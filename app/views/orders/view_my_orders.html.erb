@@ -10,9 +10,13 @@
           <div class="card-item-infos">
             <h2><%= order.meal.name %></h2>
             <h5>🗓 Ordered on the <strong><%= order.pick_up_date %></strong></h5>
-            <h5>Cooked with ❤️ by <strong><%= order.user.username %></strong></h5>
-            <h5>To be shared with <strong><%= pluralize(order.order_quantity, 'friend') %></strong> 👨‍👩‍👧 </h5>
-            <h2><%= order.order_quantity * order.meal.unit_price%> euros</h2>
+
+            <h5>Cooked with ❤️ by <strong><%= order.meal.user.username %></strong></h5>
+            <h5>To be shared with <strong><%= order.order_quantity %></strong> friends 👨‍👩‍👧 </h5>
+            <div class="order-status">
+              <h2><%= order.order_quantity * order.meal.unit_price%> euros</h2>
+              <span class="display-status-box"> <%= order.status %></span>
+
           </div>
         </div>
         <div class="review-order">

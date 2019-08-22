@@ -19,8 +19,11 @@
         </div>
       </div>
 
+
       <div class="meal_text py-3">
         <%= simple_format(@meal.description) %>
+        <p> Nombre de parts max : <%= @meal.quantity_max %> </p>
+
       </div>
       <div class="allergies">
         <ul>

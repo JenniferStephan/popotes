@@ -25,6 +25,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def change_status
+    @order = Order.find(params[:id])
+    params[:status] == "accept" ? @order.status = 'accepted' : @order.status = 'declined'
+    @order.save
+    redirect_to my_meals_path
+  end
+
   private
 
   def order_params

@@ -38,11 +38,13 @@
  border: 1px solid rgb(80, 80, 80);
  display: inline-block;
  padding: 10px 15px;
- margin-left: 20px;
+ margin-right: 20px;
+ margin-bottom: 15px;
 }
 
 .allergies ul {
   list-style: none;
+  padding-left: 0;
 }
 
 .review-global-rating h3 {

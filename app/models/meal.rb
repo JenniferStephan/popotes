@@ -7,6 +7,10 @@ class Meal < ApplicationRecord
   has_many :eater_users, through: :orders, source: :user
   has_many :reviews
 
+
+
+  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma", "Italian", "Healthy", "Moroccan", "Burger", "Vegan", "Thaï", "Hawaïan"]
+
   pg_search_scope :global_search,
     against: [ :name, :description, :category ],
     associated_against: {
@@ -16,7 +20,6 @@ class Meal < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  CATEGORIES = ["French", "Sushi", "Dessert", "Grandma's food", "Chinese", "Healthy", "Moroccan", "Burger", "Vegan", "Italian", "Thaï", "Hawaïan"]
 
   validates :name, presence: true
   validates :description, presence: true
@@ -30,6 +33,18 @@ class Meal < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+
+  def can_delete?
+    !self.orders.pluck(:status).include?('accepted')
+  end
+
+  def left_quantity
+    if !can_delete?
+      self.quantity_max - self.orders.where(status: "accepted").pluck(:order_quantity).reduce(:+)
+    else
+      self.quantity_max
+    end
 
   def rating_average
     self.reviews.map { |review| review.rating }.reduce(:+) / self.reviews.count.to_f

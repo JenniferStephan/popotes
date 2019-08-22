@@ -40,6 +40,21 @@
   padding: 16px;
 }
 
+
+.order-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.display-status-box {
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 4px;
+  padding: 8px 15px;
+}
+
+
+
 .review-order {
   align-self: flex-end;
   padding: 16px;
@@ -51,3 +66,4 @@
   font-size: 16px;
   color: white;
 }
+
