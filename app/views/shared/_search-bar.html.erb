@@ -1,0 +1,8 @@
+<%= form_tag meals_path, method: :get, class: "searchbar form-inline" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "td form-control mr-3 w-75",
+    placeholder: "Search by meal name, food category, ingredient or cook username"
+  %>
+
+<% end %>
