@@ -1,5 +1,6 @@
 <div class="container mt-3 ">
 
+
 <!-- adding searchbar-->
 
 <%= render '/shared/search-bar' %>
@@ -25,7 +26,6 @@
           </div>
       </div>
 
-
       <div class="category-item">
           <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #F8E865" #A4D1C8>
             Ingredients
@@ -39,7 +39,6 @@
             <% end %>
           </div>
       </div>
-
 
       <div class="category-item">
         <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #A4D1C8">
@@ -71,11 +70,14 @@
 <!-- mosaic of meals -->
 <div class="cards_and_map_container">
   <div class="row cards-row">
+
     <% @meals.each do |meal| %>
       <div class="box col-6">
         <%= link_to meal_path(meal) do %>
           <div class="meal-card">
-            <% if meal.left_quantity == 0 %>
+
+            <% if meal.left_quantity == 0 || meal.left_quantity < 0 %>
+
               <span class="badge badge-pill badge-warning">
                 Sold Out
               </span>
@@ -92,11 +94,13 @@
                   <div class="d-flex align-items-center">
                     <span><%= meal.quantity_max %></span>
                     <i class="material-icons ml-1">people</i>
+
                   </div>
                   <div class="d-flex ml-5">
                     <div class="order-count"><%= meal.left_quantity %></div>
                     <span><p class="ml-1">left</p></span>
                   </div>
+
                   <div class="d-flex ml-5 align-items-center">
                     <%= meal.unit_price %>
                     <i class="material-icons ml-1">euro_symbol</i>
@@ -113,6 +117,4 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-
 

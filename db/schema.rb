@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_08_23_084838) do
 
   # These are extensions that must be enabled in order to support this database
@@ -64,9 +65,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_084838) do
   end
 
   create_table "orders", force: :cascade do |t|
-
     t.date "pick_up_date", default: "2019-08-23"
-
     t.text "order_comment"
     t.bigint "user_id"
     t.bigint "meal_id"
