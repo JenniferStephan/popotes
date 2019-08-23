@@ -17,7 +17,7 @@
           </div>
 
           <div class="dropdown-menu">
-            <% Meal::CATEGORIES.each do |category| %>
+            <% Category.pluck(:name).each do |category| %>
               <li>
                 <%= link_to category, meals_path(:query => category), class: "dropdown-item" %>
               </li>
