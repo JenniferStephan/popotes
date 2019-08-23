@@ -101,7 +101,11 @@ soup = Meal.new(
   name: 'Chinese soup',
   address: '10 rue des Dames, Paris',
   category: 'Chinese',
-  description: 'A delicious soup',
+  description: "Soup is a primarily liquid food, generally served warm or hot (but may be cool or cold), that is made by combining ingredients of meat or vegetables with stock, or water. Hot soups are additionally characterized by boiling solid ingredients in liquids in a pot until the flavors are extracted, forming a broth. Soups are similar to stews, and in some cases there may not be a clear distinction between the two; however, soups generally have more liquid (broth) than stews.[1]
+
+In traditional French cuisine, soups are classified into two main groups: clear soups and thick soups. The established French classifications of clear soups are bouillon and consommé. Thick soups are classified depending upon the type of thickening agent used: purées are vegetable soups thickened with starch; bisques are made from puréed shellfish or vegetables thickened with cream; cream soups may be thickened with béchamel sauce; and veloutés are thickened with eggs, butter, and cream. Other ingredients commonly used to thicken soups and broths include egg,[2] rice, lentils, flour, and grains; many popular soups also include pumpkin, carrots, potatoes, pig's trotters and bird's nests.
+
+Other types of soup include fruit soups, dessert soups, pulse soups like split pea, cold soups and other styles.",
   unit_price: 6,
   quantity_max: 3,
   user: aurore,
@@ -116,7 +120,9 @@ salad = Meal.new(
   name: 'Ceasar salad',
   address: '200 rue de Rivoli, Paris',
   category: 'Healthy',
-  description: 'A healthy salad',
+  description: "A salad is a dish consisting of a mixture of small pieces of food, usually vegetables or fruit.[1][2] However, different varieties of salad may contain virtually any type of ready-to-eat food. Salads are typically served at room temperature or chilled, with notable exceptions such as south German potato salad which can be served warm.
+
+Garden salads use a base of leafy greens such as lettuce, arugula/rocket, kale or spinach; they are common enough that the word salad alone often refers specifically to garden salads. Other types include bean salad, tuna salad, fattoush, Greek salad (vegetable based, but without leafy greens), and sōmen salad (a noodle-based salad). The sauce used to flavor a salad is commonly called a salad dressing; most salad dressings are based on either a mixture of oil and vinegar or a fermented milk product like kefir.",
   unit_price: 5,
   quantity_max: 3,
   user: t
@@ -130,7 +136,7 @@ vegsalad = Meal.new(
   name: 'Vege salad',
   address: '10 villa Gaudelet, Paris',
   category: 'Healthy',
-  description: 'For vegetables lovers',
+  description: "Vegetables are parts of plants that are consumed by humans or other animals as food. The original meaning is still commonly used and is applied to plants collectively to refer to all edible plant matter, including the flowers, fruits, stems, leaves, roots, and seeds. The alternate definition of the term vegetable is applied somewhat arbitrarily, often by culinary and cultural tradition. It may exclude foods derived from some plants that are fruits, flowers, nuts, and cereal grains, but include some fruits such as tomatoes and courgettes, flowers such as broccoli, and seeds such as pulses.",
   unit_price: 5,
   quantity_max: 4,
   user: j
@@ -145,7 +151,11 @@ pizza_margarita = Meal.new(
   name: 'Pizza margarita',
   address: '135 avenue de Versailles',
   category: 'Italian',
-  description: 'Home-made pizza with stuff I bought at the supermarket',
+  description: " is a savory dish of Italian origin, consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and various other ingredients (anchovies, olives, meat, etc.) baked at a high temperature, traditionally in a wood-fired oven.[1] In formal settings, like a restaurant, pizza is eaten with knife and fork[citation needed], but in casual settings it is cut into wedges to be eaten while held in the hand. Small pizzas are sometimes called pizzettas.
+
+The term pizza was first recorded in the 10th century in a Latin manuscript from the Southern Italian town of Gaeta in Lazio, on the border with Campania.[2] Modern pizza was invented in Naples, and the dish and its variants have since become popular in many countries.[3] It has become one of the most popular foods in the world and a common fast food item in Europe and North America, available at pizzerias (restaurants specializing in pizza), restaurants offering Mediterranean cuisine, and via pizza delivery.[3][4] Many companies sell ready-baked frozen pizzas to be reheated in an ordinary home oven.
+
+The Associazione Verace Pizza Napoletana (lit. True Neapolitan Pizza Association) is a non-profit organization founded in 1984 with headquarters in Naples that aims to promote traditional Neapolitan pizza.[5] In 2009, upon Italy's request, Neapolitan pizza was registered with the European Union as a Traditional Speciality Guaranteed dish,[6][7] and in 2017 the art of its making was included on UNESCO's list of intangible cultural heritage.[8]",
   unit_price: 5,
   quantity_max: 6,
   user: jenni,
@@ -160,7 +170,11 @@ pad_thai = Meal.new(
   name: 'Pad Thai',
   address: '23 avenue Junot',
   category: 'Thaï',
-  description: 'Home street food',
+  description: "Stir fried rice noodles may have been introduced to Ayutthaya during the time of the Ayutthaya Kingdom by Chinese traders[4][5] and subsequently altered to reflect Thai flavor profiles.[5]
+
+Author Mark Padoongpatt[6] maintains that pad thai is 7]
+
+Another explanation of pad thai's provenance holds that, during World War II, Thailand suffered a rice shortage due to the war and floods. To reduce domestic rice consumption, the Thai government under Prime Minister Phibunsongkhram promoted consumption of noodles instead.[8] His government promoted rice noodles and helped to establish the identity of Thailand. As a result, a new noodle called sen chan (named after Chanthaburi Province) was created. Pad thai has since become one of Thailand's national dishes.[9] Today, some food vendors add pork or chicken (although the original recipe did not contain pork because of the government's perception that pork was a Chinese meat).[10] Some food vendors still use the original recipe. Traditional pad thai sauce includes fish sauce, vinegar, sugar and tamarind paste. Tamarind paste is not easily found at a regular grocery stores so I substituted rice vinegar. If you would like to use tamarind paste, substitute about 2 Tablespoons in place of the rice vinegar in this recipe. I also added a big scoop of peanut butter to my sauce, because I think it gives the whole dish an added creaminess and boost of flavor that I love.",
   unit_price: 4,
   quantity_max: 8,
   user: w,

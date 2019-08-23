@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_084838) do
     t.string "address"
     t.integer "unit_price"
     t.integer "quantity_max"
-    t.date "start_availability_date", default: "2019-08-20"
+    t.date "start_availability_date"
     t.date "end_availability_date"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -64,9 +64,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_084838) do
   end
 
   create_table "orders", force: :cascade do |t|
-
     t.date "pick_up_date", default: "2019-08-23"
-
     t.text "order_comment"
     t.bigint "user_id"
     t.bigint "meal_id"
