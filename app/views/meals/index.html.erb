@@ -70,7 +70,9 @@
           <% end %>
             <div class="meal-card-content">
               <div class="meal-card-title"><h4><%= meal.name %></h4></div>
-                <p><%= meal.description %></p>
+                <% meal.categories.each do |category| %>
+                  <span><%= category.name %></span>
+                <% end %>
                 <div class="flex">
                   <div class="flex">
                     <i class="material-icons mr-2">people</i><span>

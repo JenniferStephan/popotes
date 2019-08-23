@@ -1,5 +1,6 @@
 Review.destroy_all
 User.destroy_all
+Category.destroy_all
 Meal.destroy_all
 Order.destroy_all
 Ingredient.destroy_all
@@ -77,6 +78,25 @@ cam.remote_photo_url = "https://toiledefond.net/wp-content/uploads/2015/06/10730
 cam.save!
 
 
+CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma", "Italian", "Healthy", "Morroccan", "Burger", "Vegan", "Thaï", "Hawaïan"]
+
+CATEGORIES.each do |category|
+  Category.create!(name: category)
+end
+chinese = Category.find_by(name: "Chinese")
+french = Category.find_by(name: "French")
+sushi = Category.find_by(name: "Sushi")
+dessert = Category.find_by(name: "Dessert")
+grandma = Category.find_by(name: "Grandma")
+italian = Category.find_by(name: "Italian")
+healthy = Category.find_by(name: "Healthy")
+morroccan = Category.find_by(name: "Morroccan")
+burger = Category.find_by(name: "Burger")
+vegan = Category.find_by(name: "Vegan")
+thai = Category.find_by(name: "Thaï")
+hawaian = Category.find_by(name: "Hawaïan")
+
+
 soup = Meal.new(
   name: 'Chinese soup',
   address: '10 rue des Dames, Paris',
@@ -84,10 +104,13 @@ soup = Meal.new(
   description: 'A delicious soup',
   unit_price: 6,
   quantity_max: 3,
-  user: p
+  user: aurore,
 )
 soup.remote_photo_url = "https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/simply-asia/e/2000/egg_drop_noodle_soup_2000x1125.jpg?vd=20180710T052728Z&hash=3796EEE4205BCF5842BBFC0A9E79DD4A82679CF8"
 soup.save!
+
+MealCategory.create(meal: soup, category: chinese)
+MealCategory.create(meal: soup, category: grandma)
 
 salad = Meal.new(
   name: 'Ceasar salad',
@@ -101,6 +124,8 @@ salad = Meal.new(
 salad.remote_photo_url = "https://assets.afcdn.com/recipe/20130909/48615_w1024h768c1cx2089cy1393.jpg"
 salad.save!
 
+MealCategory.create(meal: salad, category: healthy)
+
 vegsalad = Meal.new(
   name: 'Vege salad',
   address: '10 villa Gaudelet, Paris',
@@ -112,6 +137,9 @@ vegsalad = Meal.new(
 )
 vegsalad.remote_photo_url = "https://www.doitinparis.com/files/2016/recette/06/thumbs-1180x525/salade-semoule.jpg"
 vegsalad.save!
+
+MealCategory.create(meal: vegsalad, category: healthy)
+MealCategory.create(meal: vegsalad, category: vegan)
 
 pizza_margarita = Meal.new(
   name: 'Pizza margarita',
@@ -125,6 +153,9 @@ pizza_margarita = Meal.new(
 pizza_margarita.remote_photo_url = "https://assets.afcdn.com/recipe/20170105/24149_w1024h768c1cx2592cy1728.jpg"
 pizza_margarita.save!
 
+MealCategory.create(meal: pizza_margarita, category: italian)
+MealCategory.create(meal: pizza_margarita, category: grandma)
+
 pad_thai = Meal.new(
   name: 'Pad Thai',
   address: '23 avenue Junot',
@@ -137,6 +168,8 @@ pad_thai = Meal.new(
 pad_thai.remote_photo_url = "https://minimalistbaker.com/wp-content/uploads/2019/01/Easy-Vegan-Pad-Thai-SQUARE.jpg"
 pad_thai.save!
 
+MealCategory.create(meal: pad_thai, category: thai)
+
 poulet_roti = Meal.new(
   name: 'Poulet rôti',
   address: '55 rue de Passy',
@@ -148,6 +181,9 @@ poulet_roti = Meal.new(
 )
 poulet_roti.remote_photo_url = "https://images.pexels.com/photos/265393/pexels-photo-265393.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 poulet_roti.save!
+
+MealCategory.create(meal: poulet_roti, category: french)
+MealCategory.create(meal: poulet_roti, category: grandma)
 
 Order.create!(
   order_quantity: 1,
@@ -174,7 +210,7 @@ Order.create!(
   order_quantity: 2,
   pick_up_date: '2019-08-23',
   user: p,
-  meal: soup,
+  meal: pad_thai,
 )
 
 ingredients = ["Céréales contenant du gluten", "Crustacés", "Oeufs", "Poissons", "Arachides", "Soja", "Lait", "Fruits à coques", "Céleri", "Moutarde", "Graines de sésame"]

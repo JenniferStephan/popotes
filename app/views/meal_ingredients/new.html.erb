@@ -1,8 +1,9 @@
 <div class="form-meals">
-<h2> Signaler un allergène </h2>
+<h2> Allergies and categories </h2>
   <%= simple_form_for [@meal, @meal_ingredient] do |f| %>
     <%#= f.association :ingredient, label: "Faites dérouler la liste" %>
     <%= f.input :ingredient, collection: Ingredient::ALLERGIES, input_html: { class: "js-example-basic-multiple", name: "ingredient[]", multiple: "multiple" } %>
-    <%= f.submit "Ajouter au plat" %>
+    <%= render "meal_categories/precisions_form" %>
+    <%#= f.submit "Ajouter au plat", input_html: {class: "button"} %>
   <% end %>
 </div>
