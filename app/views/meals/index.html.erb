@@ -57,47 +57,50 @@
 
 
 <!-- mosaic of meals -->
-<div class="row">
-  <% @meals.each do |meal| %>
-    <div class="box col-3">
-      <%= link_to meal_path(meal) do %>
-        <div class="meal-card">
-          <div class="meal-card-image" style="background-color: url('<%= cl_image_path meal.photo %>')"></div>
-          <% if meal.left_quantity == 0 %>
-            <span class="badge badge-pill badge-warning">
-              Sold Out
-            </span>
-          <% end %>
+<div class="cards_and_map_container">
+  <div class="row">
+    <% @meals.each do |meal| %>
+      <div class="box col-6">
+        <%= link_to meal_path(meal) do %>
+          <div class="meal-card">
+            <% if meal.left_quantity == 0 %>
+              <span class="badge badge-pill badge-warning">
+                Sold Out
+              </span>
+            <% end %>
+            <div class="meal-card-image" style="background: url('<%= cl_image_path meal.photo %>')"></div>
             <div class="meal-card-content">
-              <div class="meal-card-title"><h4><%= meal.name %></h4></div>
+              <div class="meal-card-title-and-category">
+                <div class="meal-card-title"><h4><%= meal.name %></h4></div>
                 <% meal.categories.each do |category| %>
                   <span><%= category.name %></span>
                 <% end %>
-                <div class="flex">
-                  <div class="flex">
-                    <i class="material-icons mr-2">people</i><span>
-                      <%= meal.quantity_max %>
-                    </span></div>
-                  <div class="flex ml-3 count">
-                    <span> Reste </span>
-                    <div class="order-count"> <%= meal.left_quantity %></div>
+              </div>
+                <div class="meal-card-attributes d-flex align-items-end">
+                  <div class="d-flex align-items-center">
+                    <span><%= meal.quantity_max %></span>
+                    <i class="material-icons ml-1">people</i>
                   </div>
-                  <div class="flex ml-3">
-                    <i class="material-icons mr-2">euro_symbol</i>
+                  <div class="d-flex ml-5">
+                    <div class="order-count"><%= meal.left_quantity %></div>
+                    <span><p class="ml-1">left</p></span>
+                  </div>
+                  <div class="d-flex ml-5 align-items-center">
                     <%= meal.unit_price %>
+                    <i class="material-icons ml-1">euro_symbol</i>
                   </div>
                 </div>
+              </div>
             </div>
+          <% end %>
         </div>
       <% end %>
     </div>
-  <% end %>
   <div id="map" style="width: 100%; height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
 
 
 

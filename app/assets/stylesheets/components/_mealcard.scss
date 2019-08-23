@@ -1,3 +1,7 @@
+.cards_and_map_container {
+  display: flex;
+}
+
 .meal-card {
   width: 100%;
   position: relative;
@@ -6,6 +10,7 @@
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  flex-grow: 1;
 }
 
 .meal-card-disabled {
@@ -16,9 +21,9 @@
   z-index: 2;
 }
 
-
 .box:hover {
-  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  box-shadow: none;
+  transform: scale(1.03);
 }
 
 a:hover {
@@ -32,9 +37,9 @@ a:hover {
 }
 
 .meal-card-image {
-  height: 180px;
-  background-position: center;
-  background-size: cover;
+  height: 250px;
+  background-position: center !important;
+  background-size: cover !important;
 }
 
 .meal-card-image span {
@@ -45,11 +50,14 @@ a:hover {
   padding: 24px;
   text-decoration: none;
   background-color: #F8F9FA;
-  height: 200px;
 }
 
-.meal-card-title {
-  position: top;
+.meal-card-attributes p {
+  margin-bottom: 0 !important;
+}
+
+.meal-card-title-and-category {
+  margin-bottom: 20px;
 }
 
 .flex {
@@ -73,5 +81,7 @@ a:hover {
   background-color: rgba(150, 150, 150, 0);
 }
 
-
+.material-icons {
+  font-size: 20px;
+}
 
