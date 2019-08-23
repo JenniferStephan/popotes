@@ -76,7 +76,7 @@
            € /serving <span class="total-price" data-meal="<%= @meal.to_json %>"></span>€</p>
           <%= simple_form_for(@order) do |f| %>
             <%= hidden_field_tag :meal_id, @meal.id %>
-            <%= f.input :pick_up_date %>
+            <%= f.input :pick_up_date, as: :string, required: false, input_html: {class: "datepicker"} %>
             <%= f.input :order_quantity %>
             <%= f.button :submit, class: "button" %>
           <% end %>

@@ -1,33 +1,68 @@
 <div class="container mt-3 ">
+
+<!-- adding searchbar-->
+
+<%= render '/shared/search-bar' %>
+
+
 <!--   <h2>Category is...</h2> -->
+<h5>Search by...</h5>
   <div class="category-container">
+
+      <div class="category-item">
+
+
+          <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #E89972">
+          Category
+          </div>
+
+          <div class="dropdown-menu">
+            <% Meal::CATEGORIES.each do |category| %>
+              <li>
+                <%= link_to category, meals_path(:query => category), class: "dropdown-item" %>
+              </li>
+            <% end %>
+          </div>
+      </div>
+
+
+
     <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Breakfast
+      <div class="card-category" style="background-color: #F8E865">
+        Price range
       </div>
     </div>
     <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Last minute deals
-      </div>
-    </div>
-    <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Today's meals
+      <div class="card-category" style="background-color: #A4D1C8">
+        Pick-up date
       </div>
     </div>
   </div>
 </div>
 <div class="container mt-3">
-<!--   <h1>All the meals available</h1> -->
+
 <!-- dynamic count according to the search -->
+<div class="row">
+    <div class="col">
+      <% if @query %>
+        <h5>You searched for <strong><%= @query %></strong>. <%=pluralize(@meals.count,'meal')%> out of the <%= Meal.count %> available in our big marmite.🍴</h5>
+      <% elsif @query_on_category %>
+        <h5>You searched for <strong><%= @query_on_category %></strong>. <%=pluralize(@meals.count,'meal')%> out of the <%= Meal.count %> available in our big marmite.🍴</h5>
+      <% else %>
+        <h5>🍗 All <%= Meal.count %> meals.🍗</h5>
+      <% end %>
+    </div>
+</div>
+
+
+
 <!-- mosaic of meals -->
 <div class="row">
   <% @meals.each do |meal| %>
     <div class="box col-3">
       <%= link_to meal_path(meal) do %>
         <div class="meal-card">
-          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')"></div>
+          <div class="meal-card-image" style="background-color: url('<%= cl_image_path meal.photo %>')"></div>
           <% if meal.left_quantity == 0 %>
             <span class="badge badge-pill badge-warning">
               Sold Out
@@ -59,7 +94,8 @@
   <% end %>
   <div id="map" style="width: 100%; height: 600px;"
   data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
 
 

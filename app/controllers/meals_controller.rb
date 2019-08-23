@@ -16,7 +16,6 @@ class MealsController < ApplicationController
       @meals = Meal.geocoded
   end
 
-
     @markers = @meals.map do |meal|
       {
         lat: meal.latitude,
