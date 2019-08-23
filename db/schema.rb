@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_164919) do
   end
 
   create_table "orders", force: :cascade do |t|
+
     t.date "pick_up_date", default: "2019-08-22"
     t.text "order_comment"
     t.bigint "user_id"
