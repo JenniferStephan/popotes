@@ -45,6 +45,7 @@ class Meal < ApplicationRecord
     else
       self.quantity_max
     end
+  end
 
   def rating_average
     self.reviews.map { |review| review.rating }.reduce(:+) / self.reviews.count.to_f
