@@ -1,93 +1,82 @@
 <div class="meal-banner" style="background-image: url('<%= cl_image_path @meal.photo %>')">
 </div>
 
-<div class="container py-2">
-  <div class="row">
-    <div class="col-8">
-      <div class="meal_header d-flex justify-content-between py-3 border-bottom">
-        <div class="meal_big_titles">
+<div class="container">
+  <div class="meal-main-container">
+    <div class="left-content">
+      <!-- div titre + photo -->
+      <div class="d-flex justify-content-between">
+        <div>
           <h1><%= @meal.name.capitalize %></h1>
-          <div class="d-flex mt-1">
-            <% @meal.categories.each do |category| %>
-              <span class="meal_category_badge"><%= category.name %></span>
-            <% end %>
-          </div>
         </div>
-        <div class="user_pic_and_name d-flex flex-column align-items-center">
+        <div>
+        <!-- div photo + nom -->
           <% if @meal.user.photo? %>
-            <%= cl_image_tag @meal.user.photo, gravity: :face, crop: :thumb %>
+            <%= cl_image_tag @meal.user.photo, class:"user_pic_and_name", gravity: :face, crop: :thumb %>
           <% else %>
-            <img src="https://www.getdigital.fr/web/getdigital/gfx/products/__generated__resized/380x380/Aufkleber_Trollface.jpg" alt="">
+            <img src="https://www.getdigital.fr/web/getdigital/gfx/products/__generated__resized/380x380/Aufkleber_Trollface.jpg" alt="" class="user_pic_and_name">
           <% end %>
           <p><%= @meal.user.username %></p>
         </div>
       </div>
-
-
-      <div class="meal_text py-3">
-        <%= simple_format(@meal.description) %>
+      <p class="meal_category_badge"><%= @meal.category %></p>
+      <% @meal.ingredients.each do |ingredient| %>
+        <p class="allergies"><%= ingredient.name %> </p>
+      <% end %>
+      <div class="meal-info-details">
+        <p><%= @meal.description %> </p>
         <p> Nombre de parts max : <%= @meal.quantity_max %> </p>
         <p> Nombre de parts dispo : <%= @meal.left_quantity %> </p>
-
       </div>
-      <div class="allergies">
-        <ul>
-          <% @meal.ingredients.each do |ingredient| %>
-            <li><%= ingredient.name %> </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="reviews-section py-3 border-top">
-        <div class="review-global-rating d-flex align-items-center">
-          <% if @meal.reviews.present? %>
+      <hr>
+      <span class="d-flex">
+        <% if @meal.reviews.present? %>
             <h3 class="pb-2 mr-3">Reviews</h3>
             <% @meal.rating_average.floor.times do %>
               <i class="fas fa-star"></i>
+            <% end %>
+            <% if @meal.rating_average % 1 != 0 %>
+              <i class="fas fa-star-half"></i>
           <% end %>
-          <% if @meal.rating_average % 1 != 0 %>
-            <i class="fas fa-star-half"></i>
-          <% end %>
-        </div>
+        <% end %>
+      </span>
+      <div class="">
         <% @meal.reviews.each do |review| %>
-            <div class="review d-flex flex-column py-3 border-bottom">
-              <div class="d-flex align-items justify-content-between">
-                <p class="review-author"><%= review.user.username %></p>
-                <div class="review-author-and-desc">
-                  <% review.rating.times do %>
-                    <i class="fas fa-star"></i>
-                  <% end %>
-                  <% (5 - review.rating).times do %>
-                    <i class="far fa-star"></i>
-                  <% end %>
-                </div>
-              </div>
-              <p class="review-desc"><%= review.content %></p>
-            </div>
-          <% end %>
+          <span class="d-flex justify-content-between">
+            <p class="review-author"><%= review.user.username %></p>
+            <span><% review.rating.times do %>
+              <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="far fa-star"></i>
+            <% end %></span>
+          </span>
+          <span><p><%= review.content %></p></span>
         <% end %>
       </div>
     </div>
+    <!-- div photo + nom -->
+    <div class="right-content">
 
-    <% if @meal.user != current_user %>
-      <div class="col-4">
-        <div class="checkout card p-3 sticky-top">
-          <p class="d-flex py-3 border-bottom"> <span class="price-per-serving"><%= @meal.unit_price %> </span>
-           € /serving <span class="total-price" data-meal="<%= @meal.to_json %>"></span>€</p>
-          <%= simple_form_for(@order) do |f| %>
-            <%= hidden_field_tag :meal_id, @meal.id %>
-            <%= f.input :pick_up_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-            <%= f.input :order_quantity %>
-            <%= f.button :submit, class: "button" %>
-          <% end %>
+      <% if @meal.user != current_user %>
+        <div class="checkout card p-3">
+            <div class="d-flex py-3 border-bottom">
+              <span class="price-per-serving"><%= @meal.unit_price %></span>
+             € /serving
+              <span class="total-price" data-meal="<%= @meal.to_json %>"></span>€
+            </div>
+            <%= simple_form_for(@order) do |f| %>
+              <%= hidden_field_tag :meal_id, @meal.id %>
+              <%= f.input :pick_up_date %>
+              <%= f.input :order_quantity %>
+              <%= f.button :submit, class: "button" %>
+            <% end %>
+          <% else %>
+          <%= link_to 'Ajouter allergène', new_meal_meal_ingredient_path(@meal),  class: "button" %>
         </div>
-      </div>
-    <% else %>
-      <div class="col-4">
-        <div class="d-flex py-3 justify-content-center">
-          <%= link_to 'Add precisions', new_meal_meal_ingredient_path(@meal),  class: "button" %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+
+    </div>
   </div>
+  <!-- div left content -->
 </div>
