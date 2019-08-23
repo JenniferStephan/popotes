@@ -7,7 +7,11 @@
       <div class="meal_header d-flex justify-content-between py-3 border-bottom">
         <div class="meal_big_titles">
           <h1><%= @meal.name.capitalize %></h1>
-          <p class="meal_category_badge"><%= @meal.category %></p>
+          <div class="d-flex mt-1">
+            <% @meal.categories.each do |category| %>
+              <span class="meal_category_badge"><%= category.name %></span>
+            <% end %>
+          </div>
         </div>
         <div class="user_pic_and_name d-flex flex-column align-items-center">
           <% if @meal.user.photo? %>
@@ -81,7 +85,7 @@
     <% else %>
       <div class="col-4">
         <div class="d-flex py-3 justify-content-center">
-          <%= link_to 'Ajouter allergène', new_meal_meal_ingredient_path(@meal),  class: "button" %>
+          <%= link_to 'Add precisions', new_meal_meal_ingredient_path(@meal),  class: "button" %>
         </div>
       </div>
     <% end %>

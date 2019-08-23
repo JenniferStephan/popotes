@@ -6,10 +6,12 @@ class Meal < ApplicationRecord
   has_many :ingredients, through: :meal_ingredients
   has_many :eater_users, through: :orders, source: :user
   has_many :reviews
+  has_many :meal_categories, dependent: :destroy
+  has_many :categories, through: :meal_categories
 
 
 
-  CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma", "Italian", "Healthy", "Moroccan", "Burger", "Vegan", "Thaï", "Hawaïan"]
+  # CATEGORIES = ["Chinese", "French", "Sushi", "Dessert", "Grandma", "Italian", "Healthy", "Moroccan", "Burger", "Vegan", "Thaï", "Hawaïan"]
 
   pg_search_scope :global_search,
     against: [ :name, :description, :category ],
@@ -24,7 +26,7 @@ class Meal < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :address, presence: true
-  validates :category, presence: true, inclusion: { in: CATEGORIES }
+  # validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :unit_price, presence: true, numericality: { only_integer: true }
   validates :quantity_max, presence: true, numericality: { only_integer: true }
   # validates :start_availability_date, presence: true
@@ -45,6 +47,7 @@ class Meal < ApplicationRecord
     else
       self.quantity_max
     end
+  end
 
   def rating_average
     self.reviews.map { |review| review.rating }.reduce(:+) / self.reviews.count.to_f
