@@ -38,34 +38,27 @@ const additionTotal = () => {
 
 };
 
-const button = document.querySelector('#order_order_quantity')
+  const button = document.querySelector('#order_order_quantity')
 
-document.addEventListener('keyup', (event) => {
-  additionTotal();
-});
+  document.addEventListener('keyup', (event) => {
+    additionTotal();
+  });
 
-document.addEventListener('click', (event) => {
-  additionTotal();
-});
+  document.addEventListener('click', (event) => {
+    additionTotal();
+  });
 }
 
-if
-const portionOrdered = document.querySelector('.order-count').innerText;
-console.log(portionOrdered);
-
-if (portionOrdered == 0) {
-  const changeClass = () => {
-  const element = document.querySelector(".meal-card");
-  element.classList.add("mealcard-disabled");
+if (document.querySelector(".order-count")) {
+const portionOrdered = document.querySelector(".order-count").innerText;
+  if (portionOrdered == 0) {
+    const changeClass = () => {
+    const element = document.querySelector(".meal-card")
+    element.classList.add("meal-card-disabled");
+    };
+    changeClass();
   };
-  changeClass();
 }
-
-// let condition = (portionOrdered == "0");
-// const element = document.querySelector(".meal-card");
-
-// let changeClass = element.classList.toggle('meal-card-disabled', !!condition);
-// console.log(changeClass);
 
 
 
