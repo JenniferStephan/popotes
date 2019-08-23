@@ -41,3 +41,32 @@
 .border-none {
   border: none;
 }
+
+.add-meal {
+  padding-bottom: 5px;
+}
+
+.add-meal a {
+  text-decoration: none;
+  color: #036B70;
+  background-color: white;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px;
+}
+
+.add-meal a:hover {
+
+
+
+  text-decoration: none;
+  color: white;
+  background-color: #036B70;
+  padding: 5px;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+}
