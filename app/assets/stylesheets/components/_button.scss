@@ -25,11 +25,14 @@
 }
 
 .back-button-container {
-width: 100vh;
-}
-
-.back-button button {
+margin: 30px;
+margin-bottom: 50px;
 justify-content: space-around;
 }
 
+.back-button-container a:hover {
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+}
 
