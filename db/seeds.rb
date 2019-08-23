@@ -185,6 +185,35 @@ poulet_roti.save!
 MealCategory.create(meal: poulet_roti, category: french)
 MealCategory.create(meal: poulet_roti, category: grandma)
 
+poulet_curry = Meal.new(
+  name: 'Poulet Curry Coco',
+  address: '14 rue du bac',
+  category: 'Chinese',
+  description: "Super poulet curry coco, préparé avec amour pour ma belle famille, mais ils ne meritent finalement pas tant je préfère largement vous en faire profiter!",
+  unit_price: 6,
+  quantity_max: 6,
+  user: w,
+)
+poulet_curry.remote_photo_url = "https://assets.afcdn.com/recipe/20170315/63894_w1024h768c1cx2592cy1728.jpg"
+poulet_curry.save!
+
+MealCategory.create(meal: poulet_curry, category: Chinese)
+
+
+poulet_tikka = Meal.new(
+  name: 'Poulet Tikka',
+  address: '145 boulvard saint germain',
+  category: 'Chinese',
+  description: "Tasty! J'ai préparé une recette pour 8 personnes mais je vis seul. Profitez en! J'ai acheté le poulet chez le meilleur boucher de mon quartier, viande de qualité!",
+  unit_price: 5,
+  quantity_max: 8,
+  user: a,
+)
+poulet_tikka.remote_photo_url = "http://paleo-regime.fr/wp-content/uploads/2018/12/Poulet-Tikka-Massala-04-2.jpg"
+poulet_tikka.save!
+
+MealCategory.create(meal: poulet_tikka, category: Chinese)
+
 Order.create!(
   order_quantity: 1,
   pick_up_date: '2019-08-20',
