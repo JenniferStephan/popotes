@@ -1,0 +1,44 @@
+.container-orders-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.my-orders-red {
+display: flex;
+border: 1px solid rgba(0,0,0,0.2);
+border-radius: 4px;
+padding: 10px 15px;
+margin-bottom: 10px;
+justify-content:space-between;
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.my-orders-pic-crop img {
+  width: 250px;
+  margin-right: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.my-orders-info-details {
+  display: flex;
+}
+
+
+.my-order-status {
+  border:1px solid rgba(0,0,0,0.2);
+  padding: 10px 15px;
+  border-radius: 4px;
+  color: #036B70;
+}
+
+.order-price-and-status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-orders-review-display {
+  padding: 10px 15px;
+}
+
+
+

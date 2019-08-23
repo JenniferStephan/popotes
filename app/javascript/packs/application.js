@@ -60,6 +60,7 @@ const initCards = () => {
 }
 
 if (document.querySelector('.order-count')) {
+
   initCards();
 }
 

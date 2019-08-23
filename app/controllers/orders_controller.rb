@@ -16,12 +16,16 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     @meal = Meal.find(params[:meal_id])
-    @order.meal = @meal
-    if @order.save
-      flash[:notice] = "Your order has been successfully created!"
-      redirect_to my_orders_path
+    if @order.order_quantity >= @meal.left_quantity
+      @order.meal = @meal
+      if @order.save
+        flash[:notice] = "Your order has been successfully created!"
+        redirect_to my_orders_path
+      else
+        render 'meals/show'
+      end
     else
-      render 'meals/show'
+      flash[:notice] = "There is only #{@meal.left_quantity}"
     end
   end
 
