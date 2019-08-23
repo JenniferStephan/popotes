@@ -6,6 +6,7 @@
   transition: background 0.3s ease;
   opacity: 1;
   width: 100%;
+  text-align: center;
 }
 
 .little-button-yellow {
@@ -22,3 +23,16 @@
   color: white;
   opacity: 0.8;
 }
+
+.back-button-container {
+margin: 30px;
+margin-bottom: 50px;
+justify-content: space-around;
+}
+
+.back-button-container a:hover {
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+}
+

@@ -3,4 +3,7 @@
   <span> <%= cl_image_tag meal.photo %> </span>
 </div>
 <p><%= meal.address %></p>
+<button class="button map-link">
+  <%= link_to "Buy", meal_path(meal) %>
+</button>
 

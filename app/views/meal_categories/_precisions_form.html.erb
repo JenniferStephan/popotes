@@ -1,0 +1,4 @@
+<%= simple_form_for [@meal, @meal_category] do |f| %>
+  <%= f.association :category, input_html: { class: "js-example-basic-multiple", name: "categories[]", multiple: "multiple" } %>
+  <%= f.submit class: "button" %>
+<% end %>

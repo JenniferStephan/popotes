@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'meal_categories/new'
+  get 'meal_categories/create'
   devise_for :users
   root to: "pages#home"
   resources :orders, only: [ :new, :create ] do
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
     collection do
       get 'top_five'
     end
+    resources :meal_categories, only: [:new, :create]
     resources :meal_ingredients, only: [:new, :create]
     resources :reviews, only: [ :new, :create ]
   end

@@ -1,65 +1,115 @@
 <div class="container mt-3 ">
+​
+<!-- adding searchbar-->
+​
+<%= render '/shared/search-bar' %>
+​
+​
 <!--   <h2>Category is...</h2> -->
+<h5>Search by...</h5>
   <div class="category-container">
-    <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Breakfast
+​
+      <div class="category-item">
+​
+​
+          <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #E89972">
+          Category
+          </div>
+​
+          <div class="dropdown-menu">
+            <% Category.pluck(:name).each do |category| %>
+              <li>
+                <%= link_to category, meals_path(:query => category), class: "dropdown-item", as: :boolean %>
+              </li>
+            <% end %>
+          </div>
       </div>
-    </div>
-    <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Last minute deals
+​
+​
+      <div class="category-item">
+          <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #F8E865" #A4D1C8>
+            Ingredients
+          </div>
+​
+          <div class="dropdown-menu">
+            <% Ingredient.pluck(:name).each do |ingredient| %>
+              <li>
+                <%= link_to ingredient, meals_path(:query => ingredient), class: "dropdown-item" %>
+              </li>
+            <% end %>
+          </div>
       </div>
-    </div>
-    <div class="category-item">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Today's meals
+​
+​
+      <div class="category-item">
+        <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #A4D1C8">
+          Pick-up date
+        </div>
+        <%#= simple_form_for(@meal) do |f| %>
+        <%#= f.input :pick_up_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%# end %>
       </div>
-    </div>
   </div>
 </div>
 <div class="container mt-3">
-<!--   <h1>All the meals available</h1> -->
+​
 <!-- dynamic count according to the search -->
-<!-- mosaic of meals -->
 <div class="row">
-  <% @meals.each do |meal| %>
-    <div class="box col-3">
-      <%= link_to meal_path(meal) do %>
-        <div class="meal-card">
-          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')"></div>
-          <% if meal.left_quantity == 0 || meal.left_quantity < 0 %>
-            <span class="badge badge-pill badge-warning">
-              Sold Out
-            </span>
-          <% end %>
+    <div class="col">
+      <% if @query %>
+        <h5>You searched for <strong><%= @query %></strong>. <%=pluralize(@meals.count,'meal')%> out of the <%= Meal.count %> available in our big marmite.🍴</h5>
+      <% elsif @query_on_category %>
+        <h5>You searched for <strong><%= @query_on_category %></strong>. <%=pluralize(@meals.count,'meal')%> out of the <%= Meal.count %> available in our big marmite.🍴</h5>
+      <% else %>
+        <h5>🍗 All <%= Meal.count %> meals.🍗</h5>
+      <% end %>
+    </div>
+</div>
+​
+​
+​
+<!-- mosaic of meals -->
+<div class="cards_and_map_container">
+  <div class="row">
+    <% @meals.each do |meal| %>
+      <div class="box col-6">
+        <%= link_to meal_path(meal) do %>
+          <div class="meal-card">
+            <% if meal.left_quantity == 0 || meal.left_quantity < 0 %>
+              <span class="badge badge-pill badge-warning">
+                Sold Out
+              </span>
+            <% end %>
+            <div class="meal-card-image" style="background: url('<%= cl_image_path meal.photo %>')"></div>
             <div class="meal-card-content">
-              <div class="meal-card-title"><h4><%= meal.name %></h4></div>
-                <p><%= meal.description %></p>
-                <div class="flex">
-                  <div class="flex">
-                    <i class="material-icons mr-2">people</i><span>
-                      <%= meal.quantity_max %>
-                    </span></div>
-                  <div class="flex ml-3 count">
-                    <span> Reste </span>
-                    <div class="order-count"> <%= meal.left_quantity %></div>
+              <div class="meal-card-title-and-category">
+                <div class="meal-card-title"><h4><%= meal.name %></h4></div>
+                <% meal.categories.each do |category| %>
+                  <span><%= category.name %></span>
+                <% end %>
+              </div>
+                <div class="meal-card-attributes d-flex align-items-end">
+                  <div class="d-flex align-items-center">
+                    <span><%= meal.quantity_max %></span>
+                    <i class="material-icons ml-1">people</i>
                   </div>
-                  <div class="flex ml-3">
-                    <i class="material-icons mr-2">euro_symbol</i>
+                  <div class="d-flex ml-5">
+                    <div class="order-count"><%= meal.left_quantity %></div>
+                    <span><p class="ml-1">left</p></span>
+                  </div>
+                  <div class="d-flex ml-5 align-items-center">
                     <%= meal.unit_price %>
+                    <i class="material-icons ml-1">euro_symbol</i>
                   </div>
                 </div>
+              </div>
             </div>
+          <% end %>
         </div>
       <% end %>
     </div>
-  <% end %>
   <div id="map" style="width: 100%; height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
-
-
-
-

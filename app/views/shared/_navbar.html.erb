@@ -29,13 +29,17 @@
         <%= link_to "Log out", destroy_user_session_path, class: "nav-link d-block d-sm-none" %>
       </li>
 
+      <button class="border-none add-meal" type="button" >
+          <%= link_to "Add a meal", new_meal_path %>
+        </button>
+
       <li class="dropdown align-self-center d-none d-sm-block mr-3">
         <button class="dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           My kitchen
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% if user_signed_in? %>
-          <%= link_to "Add a meal", new_meal_path, class: "dropdown-item" %>
+
           <%= link_to "My meals", my_meals_path, class: "dropdown-item" %>
           <%= link_to "My orders", my_orders_path, class: "dropdown-item" %>
           <%= link_to "My profile", "#", class: "dropdown-item d-block d-sm-none" %>
@@ -49,10 +53,7 @@
 
       <li class="nav-item dropdown">
           <%= image_tag "https://resize-parismatch.lanmedia.fr/img/var/news/storage/images/paris-match/people-a-z/javier-bardem/6033180-8-fre-FR/Javier-Bardem.jpg", class: "avatar dropdown-toggle d-none d-sm-block", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "My profile", "#", class: "dropdown-item" %>
-          <%= link_to "Log out", "#", class: "dropdown-item" %>
-        </div>
+
 
       </li>
     </ul>
