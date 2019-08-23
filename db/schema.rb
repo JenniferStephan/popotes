@@ -10,11 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_08_22_164919) do
-=======
+
 ActiveRecord::Schema.define(version: 2019_08_23_084838) do
->>>>>>> 97a2f40d0ccd060a5e4221e092b4a01c0411bb1e
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,13 +65,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_084838) do
   end
 
   create_table "orders", force: :cascade do |t|
-<<<<<<< HEAD
-    t.date "pick_up_date", default: "2019-08-20"
-=======
-
     t.date "pick_up_date", default: "2019-08-23"
-
->>>>>>> 97a2f40d0ccd060a5e4221e092b4a01c0411bb1e
     t.text "order_comment"
     t.bigint "user_id"
     t.bigint "meal_id"

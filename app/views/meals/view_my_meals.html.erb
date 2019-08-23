@@ -1,51 +1,59 @@
-<h2> To be cooked ! </h2>
-<% @my_received_orders.each do |order| %>
-  <% if order.status == "accepted" %>
-      <div class="card-items">
-        <%= cl_image_tag order.meal.photo %>
-      <div class="card-item-infos">
-        <%= order.meal.name %> - <%= order.user.email %> - status <%= order.status %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-  <h2> my received orders </h2>
+<div class="container">
+  <h2 class="mt-3">To be cooked</h2>
   <% @my_received_orders.each do |order| %>
-  <% if order.status != "accepted" %>
-    <div class="card-items">
-      <%= cl_image_tag order.meal.photo %>
-      <div class="card-item-infos">
-        <%= order.meal.name %> - <%= order.user.email %> - status <%= order.status %>
-        <p><%= link_to "Accept", change_status_order_path(order, :status => "accept"), method: :POST, class:"btn btn-outline-dark" %></p>
-        <p><%= link_to "Decline", change_status_order_path(order, :status => "decline"), method: :POST, class:"btn btn-outline-dark" %> </p>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-
-<h2>my meals</h2>
-    <% @my_meals.each do |meal| %>
-      <div class="card-items" >
-        <%= cl_image_tag meal.photo %>
+    <% if order.status == "accepted" %>
+        <div class="card-items">
+          <%= cl_image_tag order.meal.photo %>
         <div class="card-item-infos">
-          <h2><%= meal.name %></h2>
-          <p><%= meal.description %><%=  meal.quantity_max %></p>
-
-          <% if meal.can_delete? %>
-
-            <p><%= link_to "Edit", edit_meal_path(meal.id), class:"btn btn-outline-dark" %></p>
-            <p><%= link_to "Delete", meal_path(meal.id), class:"btn btn-outline-dark",
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-           </p>
-
-          <% end %>
+          <p><%= order.meal.name %></p>
+          <p><%= order.user.username %></p>
+          <p>Status <%= order.status %></p>
         </div>
       </div>
+    <% end %>
+  <% end %>
+
+    <h2 class="mt-3">My received orders </h2>
+    <% @my_received_orders.each do |order| %>
+    <% if order.status != "accepted" %>
+      <div class="card-items">
+        <%= cl_image_tag order.meal.photo %>
+        <div class="card-item-infos">
+          <p><%= order.meal.name %></p>
+          <p><%= order.user.username %></p>
+          <p>Status <%= order.status %></p>
+          <p><%= link_to "Accept", change_status_order_path(order, :status => "accept"), method: :POST, class:"btn btn-outline-dark" %></p>
+          <p><%= link_to "Decline", change_status_order_path(order, :status => "decline"), method: :POST, class:"btn btn-outline-dark" %> </p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 
 
+  <h2 class="mt-3">My meals</h2>
+      <% @my_meals.each do |meal| %>
+        <div class="card-items" >
+          <%= cl_image_tag meal.photo %>
+          <div class="card-item-infos">
+            <p><%= meal.name %></p>
+            <% meal.categories.each do |category| %>
+              <span><%= category.name %></span>
+            <% end %>
+            <p><%=  meal.quantity_max %></p>
+
+            <% if meal.can_delete? %>
+
+              <p><%= link_to "Edit", edit_meal_path(meal.id), class:"btn btn-outline-dark" %></p>
+              <p><%= link_to "Delete", meal_path(meal.id), class:"btn btn-outline-dark",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+             </p>
+
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+
+</div>
 
 

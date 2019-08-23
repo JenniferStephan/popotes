@@ -1,21 +1,22 @@
 <div class="container mt-3 ">
-​
+
+
 <!-- adding searchbar-->
-​
+
 <%= render '/shared/search-bar' %>
-​
-​
+
+
 <!--   <h2>Category is...</h2> -->
 <h5>Search by...</h5>
   <div class="category-container">
-​
+
       <div class="category-item">
-​
-​
+
+
           <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #E89972">
           Category
           </div>
-​
+
           <div class="dropdown-menu">
             <% Category.pluck(:name).each do |category| %>
               <li>
@@ -24,13 +25,12 @@
             <% end %>
           </div>
       </div>
-​
-​
+
       <div class="category-item">
           <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #F8E865" #A4D1C8>
             Ingredients
           </div>
-​
+
           <div class="dropdown-menu">
             <% Ingredient.pluck(:name).each do |ingredient| %>
               <li>
@@ -39,8 +39,7 @@
             <% end %>
           </div>
       </div>
-​
-​
+
       <div class="category-item">
         <div class="card-category dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" style="background-color: #A4D1C8">
           Pick-up date
@@ -52,7 +51,7 @@
   </div>
 </div>
 <div class="container mt-3">
-​
+
 <!-- dynamic count according to the search -->
 <div class="row">
     <div class="col">
@@ -65,17 +64,20 @@
       <% end %>
     </div>
 </div>
-​
-​
-​
+
+
+
 <!-- mosaic of meals -->
 <div class="cards_and_map_container">
-  <div class="row">
+  <div class="row cards-row">
+
     <% @meals.each do |meal| %>
       <div class="box col-6">
         <%= link_to meal_path(meal) do %>
           <div class="meal-card">
+
             <% if meal.left_quantity == 0 || meal.left_quantity < 0 %>
+
               <span class="badge badge-pill badge-warning">
                 Sold Out
               </span>
@@ -92,11 +94,13 @@
                   <div class="d-flex align-items-center">
                     <span><%= meal.quantity_max %></span>
                     <i class="material-icons ml-1">people</i>
+
                   </div>
                   <div class="d-flex ml-5">
                     <div class="order-count"><%= meal.left_quantity %></div>
                     <span><p class="ml-1">left</p></span>
                   </div>
+
                   <div class="d-flex ml-5 align-items-center">
                     <%= meal.unit_price %>
                     <i class="material-icons ml-1">euro_symbol</i>
@@ -108,8 +112,9 @@
         </div>
       <% end %>
     </div>
-  <div id="map" style="width: 100%; height: 600px;"
+  <div id="map" style="width: 40%; height: 600px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
