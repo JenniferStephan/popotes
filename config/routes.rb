@@ -16,5 +16,6 @@ Rails.application.routes.draw do
       get 'top_five'
     end
     resources :meal_ingredients, only: [:new, :create]
+    resources :reviews, only: [ :new, :create ]
   end
 end

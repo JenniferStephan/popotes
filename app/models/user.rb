@@ -4,9 +4,12 @@ class User < ApplicationRecord
   has_many :meals, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :booked_meals, through: :orders, source: :meal
+  has_many :reviews
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates :username, presence: true, uniqueness: true
+
+  mount_uploader :photo, PhotoUploader
 end

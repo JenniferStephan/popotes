@@ -1,61 +1,42 @@
 <div class="container mt-3 ">
 <!--   <h2>Category is...</h2> -->
-
   <div class="category-container">
-
     <div class="category-item">
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
         Breakfast
       </div>
     </div>
-
     <div class="category-item">
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
         Last minute deals
       </div>
     </div>
-
     <div class="category-item">
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
         Today's meals
       </div>
     </div>
-
   </div>
-
 </div>
-
-
-
 <div class="container mt-3">
 <!--   <h1>All the meals available</h1> -->
-
 <!-- dynamic count according to the search -->
-
 <!-- mosaic of meals -->
-
 <div class="row">
   <% @meals.each do |meal| %>
     <div class="box col-3">
-
-
       <%= link_to meal_path(meal) do %>
         <div class="meal-card">
-
           <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')"></div>
-
           <% if meal.left_quantity == 0 %>
             <span class="badge badge-pill badge-warning">
               Sold Out
             </span>
           <% end %>
-
             <div class="meal-card-content">
               <div class="meal-card-title"><h4><%= meal.name %></h4></div>
                 <p><%= meal.description %></p>
-
                 <div class="flex">
-
                   <div class="flex">
                     <i class="material-icons mr-2">people</i><span>
                       <%= meal.quantity_max %>
@@ -68,16 +49,17 @@
                     <i class="material-icons mr-2">euro_symbol</i>
                     <%= meal.unit_price %>
                   </div>
-
                 </div>
             </div>
         </div>
       <% end %>
-
     </div>
   <% end %>
-
   <div id="map" style="width: 100%; height: 600px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
+
+
+
+
