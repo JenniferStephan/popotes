@@ -6,11 +6,11 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
-  margin: 20px;
+  // margin: 20px;
 }
 
 .card-items img {
-  // height: 100%;
+  height: 100%;
   width: 200px;
   object-fit: cover;
 }
@@ -67,3 +67,7 @@
   color: white;
 }
 
+.card-item-infos p {
+  font-size: 20px;
+  color: black;
+}

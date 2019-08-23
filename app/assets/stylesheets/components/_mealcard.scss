@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.cards-row {
+  flex: 0 0 60%;
+}
+
 .meal-card {
   width: 100%;
   position: relative;

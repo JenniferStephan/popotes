@@ -70,7 +70,7 @@
 
 <!-- mosaic of meals -->
 <div class="cards_and_map_container">
-  <div class="row">
+  <div class="row cards-row">
     <% @meals.each do |meal| %>
       <div class="box col-6">
         <%= link_to meal_path(meal) do %>
@@ -108,7 +108,7 @@
         </div>
       <% end %>
     </div>
-  <div id="map" style="width: 100%; height: 600px;"
+  <div id="map" style="width: 40%; height: 600px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
