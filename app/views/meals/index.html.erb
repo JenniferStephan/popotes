@@ -28,7 +28,7 @@
       <%= link_to meal_path(meal) do %>
         <div class="meal-card">
           <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.photo %>')"></div>
-          <% if meal.left_quantity == 0 %>
+          <% if meal.left_quantity == 0 || meal.left_quantity < 0 %>
             <span class="badge badge-pill badge-warning">
               Sold Out
             </span>

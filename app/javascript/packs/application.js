@@ -49,16 +49,18 @@ const additionTotal = () => {
   });
 }
 
-if (document.querySelector(".order-count")) {
-const portionOrdered = document.querySelector(".order-count").innerText;
-  if (portionOrdered == 0) {
-    const changeClass = () => {
-    const element = document.querySelector(".meal-card")
-    element.classList.add("meal-card-disabled");
-    };
-    changeClass();
-  };
+
+const initCards = () => {
+  const cards = document.querySelectorAll('.meal-card')
+  cards.forEach((card) => {
+    if (card.querySelector('.order-count').innerText === '0') {
+      card.classList.add('meal-card-disabled')
+    }
+  })
 }
 
+if (document.querySelector('.order-count')) {
+  initCards();
+}
 
 
